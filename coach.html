@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Coach Aura">
+<meta name="theme-color" content="#fbf4ee">
+<link rel="apple-touch-icon" href="data:image/jpeg;base64,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">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+</head><body>
+<title>Espace coach Aura</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Parisienne&display=swap">
+<style>
+/* Layout : tableau de bord coach. Liste des clientes à gauche (ou en haut sur téléphone), fiche complète à droite. */
+:root{
+  --paper:#fbf4ee; --card:#fff; --ink:#2b1418; --soft:#7d6268; --line:#f0dede;
+  --red:#7a1530; --red-soft:#f7e4e7; --good:#2f8a55; --warn:#c77700;
+  --pink:#f6c7d5; --mint:#c4ddd0; --sky:#cbd9ef; --peach:#f5d1b6; --butter:#fbeec4; --lilac:#e7ddf7;
+  --f-serif:"Cormorant Garamond","Didot","Times New Roman",serif; --f-ui:"Manrope",-apple-system,"Segoe UI",Roboto,sans-serif; --f-hand:"Parisienne",cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);margin:0;font-size:15px;line-height:1.45}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none;padding:0}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;margin-bottom:18px}
+.hand{font-family:var(--f-hand);color:var(--red);font-size:22px}
+h1{font-family:var(--f-serif);font-weight:400;font-size:44px;line-height:1;margin:0}
+h1 em,h2 em{font-style:normal;color:var(--red)}
+h2{font-family:var(--f-serif);font-weight:400;font-size:30px;line-height:1.05;margin:0}
+h3{font-family:var(--f-serif);font-weight:400;font-size:24px;margin:0}
+.muted{color:var(--soft);font-size:14px;margin:0}
+.btn{border-radius:99px;padding:11px 18px;font-weight:800;background:#fff;border:1.5px solid var(--line);display:inline-flex;align-items:center;gap:6px}
+.btn.red{background:var(--red);color:#fff;border-color:transparent}
+.btn.sm{padding:7px 12px;font-size:13.5px}
+.demo{background:#fdf5d9;border:1.5px solid #f4e3a3;border-radius:16px;padding:12px 16px;margin-bottom:16px;font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;min-width:0}
+.kpi span{color:var(--soft);font-size:13px;font-weight:700}.kpi b{display:block;font-size:30px;font-variant-numeric:tabular-nums}
+.layout{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start}
+.list{display:flex;flex-direction:column;gap:10px;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;padding-bottom:4px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.chip{border-radius:99px;padding:7px 12px;font-weight:700;font-size:13.5px;background:#fff;border:1.5px solid var(--line)}
+.chip.sel{background:var(--red);color:#fff;border-color:transparent}
+.cl{display:flex;gap:12px;align-items:center;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:12px 14px;width:100%}
+.cl.sel{border-color:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+.av{flex:none;width:46px;height:46px;border-radius:50%;background:var(--pink);display:grid;place-items:center;font-family:var(--f-serif);font-size:22px;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.cl .tx{flex:1;min-width:0}.cl b{display:block;font-size:16px}.cl .sub{color:var(--soft);font-size:13px}
+.flags{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.flag{font-size:11.5px;font-weight:800;border-radius:99px;padding:2px 8px}
+.flag.warn{background:#fdecd2;color:var(--warn)}.flag.red{background:var(--red-soft);color:var(--red)}.flag.ok{background:#e3f4ea;color:#1d7a45}
+.ring{--p:0;flex:none;width:46px;height:46px;border-radius:50%;background:conic-gradient(var(--red) calc(var(--p)*1%),var(--red-soft) 0);display:grid;place-items:center;position:relative;font-size:11.5px;font-weight:800}
+.ring::before{content:"";position:absolute;inset:5px;border-radius:50%;background:#fff}.ring span{position:relative}
+.detail{display:flex;flex-direction:column;gap:14px;min-width:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;min-width:0}
+.head{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.head .av{width:72px;height:72px;font-size:32px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.stats div{background:var(--paper);border-radius:14px;padding:10px 12px;min-width:0}.stats span{font-size:12.5px;color:var(--soft);font-weight:700}.stats b{display:block;font-size:20px}
+details.sec{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+details.sec summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
+details.sec summary::-webkit-details-marker{display:none}
+details.sec summary .n{margin-left:auto;color:var(--soft);font-weight:700;font-size:13.5px}
+details.sec summary::after{content:"›";color:#c9b4b9;font-size:22px;transition:transform .2s}
+details.sec[open] summary::after{transform:rotate(90deg)}
+.secb{padding:0 18px 18px;display:flex;flex-direction:column;gap:12px}
+.qa{border-top:1px solid var(--line);padding-top:10px}
+.qa .q{font-size:13px;font-weight:800;color:var(--soft)}
+.qa .a{white-space:pre-wrap;font-size:15.5px;margin-top:2px}
+.qa .a.empty{color:#c4b3b7;font-style:italic}
+.step{border:1.5px solid var(--line);border-radius:16px;padding:12px 14px}
+.step summary{cursor:pointer;font-weight:800;display:flex;gap:8px;align-items:center}
+.pill{display:inline-block;font-size:12px;font-weight:800;padding:3px 9px;border-radius:99px;background:var(--red-soft);color:var(--red)}
+.pill.ok{background:#e3f4ea;color:#1d7a45}.pill.wait{background:#fdecd2;color:var(--warn)}.pill.grey{background:#f1ecec;color:var(--soft)}
+.msg{display:flex;flex-direction:column;gap:8px}
+.bubble{background:var(--red-soft);border-radius:16px;padding:10px 14px;white-space:pre-wrap}
+.rin{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;min-width:0}
+textarea{width:100%;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;min-height:90px;resize:vertical;font-size:15.5px;background:#fff}
+textarea:focus,input:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px var(--red-soft)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.compare figure{margin:0}.compare img{width:100%;border-radius:14px;border:1px solid var(--line)}
+.compare .empty{aspect-ratio:3/4;max-width:100%;border-radius:14px;background:var(--paper);display:grid;place-items:center;color:var(--soft);font-size:13px}
+.weekg{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.weekg div{border-radius:12px;padding:8px 6px;background:var(--paper);font-size:12.5px;min-width:0;overflow-wrap:anywhere}
+.weekg div.ok{background:#e3f4ea}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+td,th{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+.login{max-width:380px;margin:12vh auto 0;display:flex;flex-direction:column;gap:14px;text-align:center}
+.login input{border:1.5px solid var(--line);border-radius:16px;padding:14px;font-size:22px;text-align:center;letter-spacing:.2em;background:#fff}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;font-weight:600;z-index:9}
+.backbtn{display:none}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}.list{position:static;max-height:none}
+  .kpis{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}
+  .layout.has-sel .list{display:none}.layout:not(.has-sel) .detail{display:none}.backbtn{display:inline-flex}
+}
+</style>
+<div class="wrap" id="app"></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+/* ====== Espace coach ====== */
+const API = "https://script.google.com/macros/s/AKfycbz3K4LrgKI7NCtdlk8FccH5-g3MBbdSEM4fZh_6e80mxdNOLuQWnfJCPNdF9sVBGLpKNg/exec";   // la même adresse que dans l'appli des clientes
+const COACH = "Cédryna";
+const PENSEES = [
+  "Tu n'as pas besoin d'être virale. Tu as besoin d'être toi, régulièrement.",
+  "Ta future cliente te cherche déjà. Montre-toi pour qu'elle te trouve.",
+  "Chaque vidéo postée est une graine. Tu ne vois pas encore les racines.",
+  "Fais confiance au processus : ce qui est pour toi arrive au bon moment.",
+  "Tu n'as pas à jouer un personnage. Ta vraie énergie suffit.",
+  "Une story sincère vaut mieux que dix contenus parfaits jamais publiés.",
+  "Tu es exactement là où tu dois être pour passer au niveau suivant.",
+  "Les autres ne vendent pas ton offre. Toi seule peux la porter comme ça.",
+  "La régularité bat le talent quand le talent ne poste pas.",
+  "Ose prendre position. C'est comme ça qu'on te reconnaît.",
+  "Ton histoire est ton meilleur argument de vente.",
+  "Aujourd'hui, une petite action. Demain, une grande différence.",
+  "Tu attires ce que tu montres. Alors montre ce que tu veux attirer.",
+  "Célèbre chaque petite victoire : elles construisent les grandes."
+];
+
+const PROG = [
+ {m:0, label:"Avant de commencer", sub:"Ton point de départ", steps:[
+  {id:"start", n:"✦", title:"Ta photo de départ", dur:"Dès ton arrivée",
+   goal:"Poser ton point de départ. Dans 3 mois, on comparera, et tu verras tout le chemin parcouru.",
+   work:["Remplir ton questionnaire d'entrée","Me partager tes chiffres actuels","Noter tes 3 objectifs pour les 3 mois","Me dire pourquoi tu m'as rejointe"],
+   ex:{name:"Ta photo de départ", f:[
+    {t:"check",items:["Contrat signé et renvoyé","Questionnaire d'entrée rempli","Premier appel réservé"]},
+    {t:"h",v:"Tes chiffres aujourd'hui"},
+    {t:"q",v:"Ton nombre d'abonnés actuel"},
+    {t:"q",v:"Tes vues sur les 30 derniers jours (envoie aussi la capture de tes stats)"},
+    {t:"q",v:"Tes ventes actuelles (même si c'est 0, c'est ok !)"},
+    {t:"h",v:"Tes 3 objectifs"},
+    {t:"q",v:"Objectif 1"},{t:"q",v:"Objectif 2"},{t:"q",v:"Objectif 3"},
+    {t:"h",v:"Ton point de départ"},
+    {t:"q",v:"Pourquoi as-tu décidé de me rejoindre, et comment te sens-tu aujourd'hui par rapport à ton business et aux réseaux ?"}
+   ]}},
+  {id:"orga", n:"✦", title:"Check-up Organisation", dur:"30 min · semaine 1",
+   goal:"Construire un planning qui tient avec ta vraie vie.",
+   work:["Tes disponibilités (job à côté ou non, temps plein ou partiel)","Tes priorités","Ton planning type de la semaine","Ta to-do list"],
+   ex:{name:"Ton planning type", f:[
+    {t:"q",v:"Combien d'heures par semaine peux-tu consacrer à ton business ?"},
+    {t:"q",v:"Quels jours pour créer (écrire, tourner) ?"},
+    {t:"q",v:"Quels jours pour poster ?"},
+    {t:"q",v:"Quels créneaux pour répondre aux DM ?"},
+    {t:"q",v:"Tes 3 priorités pour ce premier mois"}
+   ]}}
+ ]},
+ {m:1, label:"Mois 1 · Les fondations", sub:"Qui tu es", steps:[
+  {id:"a1", n:"1", title:"Identité & positionnement", dur:"2h",
+   goal:"Que tu saches qui tu es, qui tu attires et ce que tu portes comme message, sur le bout des doigts.",
+   work:["Ton histoire, ta personnalité, ton énergie, tes valeurs","Ta cible : douleurs, désirs, mots exacts, objections","Ta promesse et ton message","Ce qui te rend unique : convictions, prises de position"],
+   ex:{name:"Tes fondations", f:[
+    {t:"h",v:"Partie 1 — Qui tu es"},
+    {t:"q",v:"Raconte ton histoire en 10 lignes : d'où tu pars, le moment déclic, où tu en es aujourd'hui."},
+    {t:"q",v:"Quels sont les 3 mots qui te décrivent le mieux ? Demande aussi à 3 proches."},
+    {t:"q",v:"Quelles sont tes 3 valeurs non négociables ?"},
+    {t:"q",v:"Quelle énergie veux-tu dégager sur les réseaux (douce, cash, drôle, inspirante…) ?"},
+    {t:"h",v:"Partie 2 — Ta cliente idéale"},
+    {t:"q",v:"Qui est-elle (âge, situation, métier, moment de vie) ?"},
+    {t:"q",v:"Quelles sont ses 5 plus grandes douleurs, avec ses propres mots ?"},
+    {t:"q",v:"Quels sont ses 5 plus grands désirs ?"},
+    {t:"q",v:"Qu'est-ce qui l'empêche d'acheter (ses objections) ?"},
+    {t:"q",v:"Qu'est-ce qu'elle a déjà essayé qui n'a pas marché ?"},
+    {t:"h",v:"Partie 3 — Ton positionnement"},
+    {t:"q",v:"Complète : « J'aide [qui] à [résultat] grâce à [ta méthode], sans [ce qu'elle ne veut plus vivre]. »"},
+    {t:"q",v:"Écris 3 convictions fortes sur ton domaine (ce que tu penses et que les autres ne disent pas)."},
+    {t:"q",v:"Qu'est-ce qui te rend différente des autres dans ton domaine ?"}
+   ]}},
+  {id:"a2", n:"2", title:"Offre & parcours de candidature", dur:"2h",
+   goal:"Que tu connaisses ton offre par cœur et que tes prospects aient un chemin clair pour candidater.",
+   work:["Ton offre : promesse, transformation, pour qui, contenu, durée, prix","Ta page en ligne (Beacons, Systeme.io…)","Le principe de la candidature : on passe par un appel","Ton Calendly + ton questionnaire de candidature"],
+   ex:{name:"Ta fiche offre", f:[
+    {t:"q",v:"Le nom de ton offre"},
+    {t:"q",v:"Ta promesse en 1 phrase (le résultat concret)"},
+    {t:"q",v:"Pour qui ? Et pour qui ce n'est PAS ?"},
+    {t:"q",v:"La transformation : avant → après"},
+    {t:"q",v:"Ce qu'elle contient (étapes, modules, appels, bonus)"},
+    {t:"q",v:"Durée et prix"},
+    {t:"q",v:"Pourquoi c'est différent de ce qui existe"},
+    {t:"q",v:"Les 3 objections les plus fréquentes + ta réponse à chacune"},
+    {t:"note",v:"🎙️ Explique ton offre à voix haute en 1 minute : enregistre un vocal et envoie-le-moi dans le groupe."},
+    {t:"h",v:"Checklist mise en place"},
+    {t:"check",items:["Page en ligne créée","Produits digitaux hébergés (si tu en as)","Calendly créé","Questionnaire de candidature rédigé","Lien testé de bout en bout"]}
+   ]}},
+  {id:"a3", n:"3", title:"Profil Instagram & confiance face cam", dur:"1h30 – 2h",
+   goal:"Que ton profil donne envie de te suivre, et que tu sois à l'aise pour te filmer.",
+   work:["Nom, pseudo, photo, biographie","Contenus épinglés et stories à la une","À quoi servent les légendes, le contenu et les stories","Tes peurs face caméra, et faire ressortir ta personnalité"],
+   ex:{name:"Ton profil Instagram", f:[
+    {t:"note",v:"🎥 Ton défi face cam se fait dans l'appli Face cam : 5 niveaux pour oser te montrer, à ton rythme."},
+    {t:"h",v:"Checklist profil"},
+    {t:"check",items:["Nom optimisé (mot-clé de ton domaine)","Bio claire : qui tu aides + résultat + appel à l'action","Photo de profil lumineuse, visage visible","3 contenus épinglés (qui tu es, une preuve, ton offre)","Stories à la une organisées","Lien vers ta page"]},
+    {t:"note",v:"📸 Envoie-moi aussi les captures de ton profil dans le groupe."}
+   ]}}
+ ]},
+ {m:2, label:"Mois 2 · Contenu & conversion", sub:"Comment tu te montres et tu vends", steps:[
+  {id:"a4", n:"4", title:"Stratégie & création de contenu", dur:"2h",
+   goal:"Une stratégie de contenu sur mesure, construite à partir de ta personnalité, de ton offre et de ton audience.",
+   work:["Les 4 types de contenu","Ta semaine type avec un fil conducteur","Hooks, structures de scripts, storytelling","Légendes et descriptions"],
+   ex:{name:"Ta semaine type + 5 scripts", f:[
+    {t:"h",v:"Partie 1 — Ta semaine type"},
+    {t:"note",v:"Remplis ta semaine directement dans l'appli « Mon planning » : un sujet pour chaque jour."},
+    {t:"h",v:"Partie 2 — 5 scripts (hook, développement, appel à l'action, légende)"},
+    {t:"q",v:"Script 1 — Connexion"},{t:"q",v:"Script 2 — Prise de position"},{t:"q",v:"Script 3 — Preuve"},{t:"q",v:"Script 4 — Coulisses"},{t:"q",v:"Script 5 — Libre"},
+    {t:"h",v:"Partie 3 — Banque d'idées"},
+    {t:"q",v:"20 idées de sujets à partir de tes fondations (douleurs, désirs, convictions, histoire)"}
+   ]}},
+  {id:"a5", n:"5", title:"Stories & parcours de vente", dur:"2h",
+   goal:"Comprendre comment tes contenus et tes stories amènent des clientes jusqu'à l'appel.",
+   work:["Les stories en séquences : vendre, connecter, éduquer, opinion, perso","Le parcours : contenu → stories → DM → WhatsApp → appel","Les appels à l'action","Les conversations en DM"],
+   ex:{name:"2 séquences stories + messages DM", f:[
+    {t:"h",v:"Partie 1 — Stories (5 à 8 stories chacune)"},
+    {t:"q",v:"Séquence connexion"},
+    {t:"q",v:"Séquence vente (qui amène vers un DM)"},
+    {t:"h",v:"Partie 2 — Tes messages DM"},
+    {t:"q",v:"Premier message à quelqu'un qui répond à une story"},
+    {t:"q",v:"Questions pour comprendre sa situation"},
+    {t:"q",v:"Message pour l'inviter en appel"},
+    {t:"q",v:"Message de relance"}
+   ]}},
+  {id:"a6", n:"6", title:"Appel de vente & closing", dur:"1h30",
+   goal:"Savoir mener un appel de vente et conclure sans forcer.",
+   work:["La structure d'un appel de vente","Présenter ton offre et ton prix avec assurance","Répondre aux objections","Le suivi après l'appel, sans courir après","Jeu de rôle : tu mènes l'appel"],
+   ex:{name:"Ta trame d'appel + objections", f:[
+    {t:"q",v:"Ta trame d'appel personnalisée (les questions que tu poses à chaque étape)"},
+    {t:"q",v:"Les 5 objections que tu entends le plus, et ta réponse à chacune"},
+    {t:"q",v:"Ton message de suivi après un appel sans décision"},
+    {t:"note",v:"🎙️ Entraîne-toi : enregistre-toi en train de présenter ton offre et ton prix (2 min max) et envoie-le dans le groupe."}
+   ]}}
+ ]},
+ {m:3, label:"Mois 3 · Approfondir & devenir autonome", sub:"Tu voles de tes propres ailes", steps:[
+  {id:"a7", n:"7", title:"Stats, optimisation & organisation", dur:"1h30",
+   goal:"Lire tes vrais chiffres, ajuster, et passer moins de temps sur la création.",
+   work:["Lire tes statistiques : ce qui marche, ce qui ne marche pas","Comparer avec ta photo de départ","Ajuster ta stratégie","Le tournage en batch"],
+   ex:{name:"Tes chiffres du mois 2", f:[
+    {t:"q",v:"Ton nombre d'abonnés aujourd'hui"},
+    {t:"q",v:"Tes vues sur les 30 derniers jours"},
+    {t:"q",v:"Tes ventes depuis le début"},
+    {t:"q",v:"Tes 3 contenus qui ont le mieux marché, et pourquoi selon toi"},
+    {t:"note",v:"🛠 Tes outils (tableau de stats, planning de tournage, guide) sont dans « Ressources »."}
+   ]}},
+  {id:"a8", n:"8", title:"YouTube", dur:"1h30 – 2h",
+   goal:"Te lancer sur YouTube dans ton domaine.",
+   work:["Pourquoi YouTube : un aimant à prospects","Choisir tes sujets","Structure d'une vidéo longue","Titre et miniature","L'intégrer dans ton parcours de vente"],
+   ex:{name:"Tes 3 premières vidéos", f:[
+    {t:"q",v:"3 idées de vidéos qui répondent aux plus grandes questions de ta cliente idéale"},
+    {t:"q",v:"Pour chacune : un titre + une idée de miniature"},
+    {t:"q",v:"Le script de ta première vidéo (intro, 3 parties, appel à l'action)"},
+    {t:"q",v:"Où vas-tu l'utiliser (stories, DM, avant les appels) ?"}
+   ]}},
+  {id:"a9", n:"9", title:"Bilan & plan d'action", dur:"1h",
+   goal:"Mesurer le chemin parcouru et préparer la suite.",
+   work:["Bilan chiffré : ta photo de départ vs aujourd'hui","Tes plus grands déclics","Ce qui fonctionne, ce qui reste à améliorer","Ton plan d'action pour les 3 prochains mois"],
+   ex:{name:"Ton bilan", f:[
+    {t:"q",v:"Tes 3 plus grands déclics pendant l'accompagnement"},
+    {t:"q",v:"Ce dont tu es le plus fière"},
+    {t:"q",v:"Ton témoignage : comment tu te sentais au début, et aujourd'hui ?"},
+    {t:"note",v:"Ton plan d'action, on le remplit ensemble pendant l'appel 💛"}
+   ]}}
+ ]}
+];
+const ALLSTEPS = PROG.flatMap(p=>p.steps);
+const SEMAINE = [["Lun","Connexion"],["Mar","Prise de position"],["Mer","Preuve"],["Jeu","Coulisses"],["Ven","Connexion"],["Sam","Preuve"],["Dim","Repos"]];
+
+const IDENT = [["q9","Phrase de positionnement"],["q1","3 mots"],["q2","Valeurs"],["q3","Énergie"],["q0","Son histoire"],["q4","Sa cliente idéale"],["q5","Douleurs de sa cible"],["q6","Désirs de sa cible"],["q10","Convictions"],["q11","Ce qui la rend différente"]];
+const SKEL = [["hook","Accroche"],["contexte","Contexte"],["bascule","Bascule"],["croyance","Croyance contre vérité"],["reconstruction","Ce qu'elle a fait"],["lecon","Leçon business"],["miroir","Miroir"],["cta","Appel à l'action"]];
+const SEQN = {connecter:"💗 Connecter",eduquer:"🎓 Éduquer",opinion:"🔥 Opinion",vendre:"💌 Vendre",perso:"🌸 Perso"};
+const TEMOINS = [["debut","Point de départ"],["mois1","Premier mois"],["mois2","Mi-parcours"],["fin","Témoignage final"]];
+const WEEKPLAN = ["Connexion","Prise de position","Preuve","Coulisses","Connexion","Preuve"];
+const FCN = [["Ma voix",[["v1","Un vocal à une amie"],["v2","Une story en voix off"],["v3","Son affirmation à voix haute"],["v4","Un vocal à une abonnée"]]],["Mon visage",[["f1","Bonjour en 15 secondes"],["f2","Se présenter en 30 secondes"],["f3","Sa routine en parlant"],["f4","Trois prises maximum"]]],["Dehors",[["o1","Une story en marchant"],["o2","Dans un café"],["o3","Un reel dehors"],["o4","Continuer quand quelqu'un passe"]]],["Sa personnalité",[["p1","Une passion hors business"],["p2","Une anecdote gênante"],["p3","Son défaut, avec humour"],["p4","Au naturel"]]],["Sa voix d'experte",[["x1","Son avis tranché"],["x2","Répondre à une objection"],["x3","60 secondes sans coupure"],["x4","Un live"]]]];
+const STAGES = ["👋 Contact","👂 Écoute","💭 Blocage identifié","📞 Appel prévu","🎉 Cliente"];
+const STRATF = [["piliers","Piliers"],["fil","Fil conducteur"],["formats","Formats"],["rythme","Rythme"],["tournage","Tournage"],["series","Séries"]];
+const eur = n => (Math.round((+n||0)*100)/100).toLocaleString("fr-FR")+" €";
+let GRES = [], showRes = false;
+const INFOS = [["offre","Offre"],["sujet","Sujet"],["ressource","Ressource gratuite"],["mot","Mot-clé"],["page","Page en ligne"],["candidature","Questionnaire de candidature"],["resaLink","Lien d'appel"]];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const iso = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const monday = (d=new Date()) => { const x=new Date(d.getFullYear(),d.getMonth(),d.getDate()); x.setDate(x.getDate()-((x.getDay()+6)%7)); return x; };
+const fr = (d,o) => new Date(d).toLocaleDateString("fr-FR", o);
+const daysSince = d => d ? Math.floor((Date.now()-new Date(d))/864e5) : 999;
+const photo = id => id ? `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w800` : "";
+let code = ""; try{ code = localStorage.getItem("aura_coach_code")||""; }catch(e){}
+let CL = [], sel = null, filt = "all", demo = !API;
+let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.hidden=false; clearTimeout(tt); tt=setTimeout(()=>t.hidden=true,2600); }
+async function post(body){ const r = await fetch(API,{method:"POST",body:JSON.stringify(Object.assign({code},body))}); return r.json(); }
+
+/* Exemples affichés tant que le Google Sheet n'est pas branché */
+function demoData(){
+  const d = n => new Date(Date.now()-n*864e5).toISOString(), wk = iso(monday());
+  const mk = (id,prenom,insta,metier,start,sem,aura,ex,posts,sc,last,data) => ({id,prenom,insta,metier,debut:start,semaine:sem,aura,exercices:ex,posts_semaine:posts,scripts_a_corriger:sc,derniere_activite:last,photo_avant:"",photo_apres:"",messages:"[]",strategie:"",ressources:"[]",prospectes_en_cours:(data.prospects||[]).filter(p=>p.st<4).length,clientes_signees:(data.prospects||[]).filter(p=>p.st===4).length,ca_total:(data.prospects||[]).filter(p=>p.st===4).reduce((a,p)=>a+(+p.montant||0),0),data:JSON.stringify(data)});
+  return [
+    mk("AURA-EX0001","Exemple · Julie","julie.naturo","Naturopathe",iso(new Date(Date.now()-40*864e5)),6,"42 %","4/11","4/6",1,d(0),{prospects:[{id:"p1",nom:"@sarah.bienetre",src:"Mot-clé",st:1,date:iso(new Date())},{id:"p2",nom:"Clara",src:"Story",st:3,appel:iso(new Date(Date.now()+2*864e5))},{id:"p3",nom:"Lina",src:"DM",st:4,montant:"450",signe:iso(new Date(Date.now()-5*864e5))}],nums:{[wk]:{mots:12,dm:7,rep:15,appels:2,ventes:1,ab:"498"}},goals:{w:{[wk]:[{t:"Publier 5 contenus",d:true},{t:"Faire 2 appels",d:false}]},m:{}},rituel:{[iso(new Date())]:{mDone:true}},strat:{piliers:"Énergie, alimentation douce, rythme de vie",fil:"Mon passage du burn-out à une vie alignée"},done:{start:true,orga:true,a1:true,a2:true},ans:{start:{q0:"312",q1:"4 800",q2:"0",q3:"Signer mes 3 premières clientes",q4:"Poster 4 fois par semaine",q5:"Oser la face cam",q6:"Je poste depuis un an et rien ne se passe."},a1:{q9:"J'aide les femmes épuisées à retrouver de l'énergie grâce à la naturopathie, sans régime strict.",q1:"douce, solaire, rassurante",q2:"honnêteté, simplicité"}},infos:{offre:"Énergie 360",mot:"ÉNERGIE"},week:{[wk]:{0:{t:"Le jour où j'ai tout plaqué",ok:true},1:{t:"Pourquoi je ne fais pas de détox",ok:true},2:{t:"Message de Sarah",ok:true},3:{t:"Ma consultation type",ok:true}}},scripts:[{id:"s1",title:"Tu n'as pas besoin d'une détox",status:"envoye",date:"2 nov.",parts:{hook:"On t'a dit qu'il fallait faire une détox. C'est faux.",lecon:"Ton corps n'a pas besoin d'être puni pour aller mieux."}}],stats:[{d:"25 sept.",ab:"312",vues:"4800",ventes:"0"},{d:"1 nov.",ab:"498",vues:"12 300",ventes:"2"}],wins:[{d:"30 octobre",t:"Ma première cliente signée !"}],temoins:{debut:{t:"Je poste depuis un an et rien ne se passe.",sent:true},mois1:{t:"J'ose enfin me montrer en story.",sent:true}},chk:{a3:{c0:true,c1:true}},habits:["📱 Poster mon contenu","💌 Répondre à mes DM"],habitLog:{[iso(new Date())]:{0:true}}}),
+    mk("AURA-EX0002","Exemple · Inès","ines.sophro","Sophrologue",iso(new Date(Date.now()-12*864e5)),2,"12 %","2/11","1/6",0,d(6),{done:{start:true,orga:true},ans:{start:{q0:"88",q3:"Avoir un agenda rempli"}},stats:[{d:"22 oct.",ab:"88",vues:"900",ventes:"0"}]}),
+    mk("AURA-EX0003","Exemple · Margaux","margaux.coach","Coach en image",iso(new Date(Date.now()-80*864e5)),12,"81 %","10/11","6/6",0,d(1),{done:{start:true,orga:true,a1:true,a2:true,a3:true,a4:true,a5:true,a6:true,a7:true,a8:true},stats:[{d:"15 août",ab:"1 020",vues:"9 000",ventes:"1"},{d:"1 nov.",ab:"2 340",vues:"41 000",ventes:"9"}],temoins:{fin:{t:"Je n'ai jamais été aussi alignée avec mon business.",sent:true}}})
+  ];
+}
+async function load(){
+  if(demo){ CL = demoData(); GRES=[{id:"g1",titre:"Exemple · Tuto Calendly",lien:"https://calendly.com",desc:"Vidéo de 5 min"}]; render(); return; }
+  if(!code){ renderLogin(); return; }
+  $("#app").innerHTML = `<p class="muted" style="padding:40px;text-align:center">Je récupère tes clientes…</p>`;
+  try{ const r = await post({action:"list"}); if(!r.ok){ if(r.error==="code"){ code=""; try{localStorage.removeItem("aura_coach_code");}catch(e){} renderLogin("Ce code n'est pas le bon."); return; } throw 0; }
+    CL = r.clientes.sort((a,b)=>new Date(b.derniere_activite)-new Date(a.derniere_activite));
+    try{ const g = await post({action:"resList"}); GRES = g.resources||[]; }catch(_){}
+    render(); }
+  catch(e){ $("#app").innerHTML = `<div class="login"><h2>Pas de connexion</h2><p class="muted">Je n'arrive pas à joindre ton Google Sheet. Vérifie ta connexion, puis réessaie.</p><button class="btn red" data-act="reload">Réessayer</button></div>`; }
+}
+function renderLogin(err){
+  $("#app").innerHTML = `<form class="login" id="login"><span class="hand">ton espace</span><h1>Espace <em>coach</em></h1><p class="muted">Entre ton code coach.</p>
+    <input id="code" type="password" autocomplete="current-password" aria-label="Code coach" required>${err?`<p class="muted" style="color:var(--red)">${err}</p>`:""}<button class="btn red" style="justify-content:center">Entrer</button></form>`;
+  $("#login").addEventListener("submit", e=>{ e.preventDefault(); code=$("#code").value.trim(); try{ localStorage.setItem("aura_coach_code",code); }catch(_){} load(); });
+}
+const D = c => { if(!c._d){ try{ c._d = JSON.parse(c.data||"{}"); }catch(e){ c._d = {}; } } return c._d; };
+const msgs = c => { try{ return JSON.parse(c.messages||"[]"); }catch(e){ return []; } };
+function flags(c){ const f=[], n=daysSince(c.derniere_activite);
+  if(n>=4) f.push(`<span class="flag warn">💤 ${n} j sans activité</span>`);
+  if(+c.scripts_a_corriger>0) f.push(`<span class="flag red">🎬 ${c.scripts_a_corriger} script${c.scripts_a_corriger>1?"s":""} à corriger</span>`);
+  const t=D(c).temoins||{}; const nt=Object.values(t).filter(x=>x&&x.sent).length; if(nt) f.push(`<span class="flag ok">🤍 ${nt} témoignage${nt>1?"s":""}</span>`);
+  return f.join(""); }
+const avH = c => c.photo_avant ? `<img src="${photo(c.photo_avant)}" alt="">` : esc((c.prenom||"?").replace("Exemple · ","").charAt(0));
+function render(){
+  const act = CL.filter(c=>daysSince(c.derniere_activite)<4).length, rel = CL.filter(c=>daysSince(c.derniere_activite)>=4).length, sc = CL.reduce((a,c)=>a+(+c.scripts_a_corriger||0),0);
+  const list = CL.filter(c=> filt==="all" || (filt==="relance" && daysSince(c.derniere_activite)>=4) || (filt==="scripts" && +c.scripts_a_corriger>0));
+  const c = CL.find(x=>x.id===sel);
+  $("#app").innerHTML = `
+   ${demo?`<div class="demo">👀 Mode démo : ces 3 clientes sont des exemples. Dès que ton Google Sheet est branché, tu verras tes vraies clientes ici.</div>`:""}
+   <div class="top"><div><span class="hand">bonjour ${COACH}</span><h1>Mes <em>clientes</em></h1></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="resPanel">📚 Ressources pour toutes</button>${demo?"":`<button class="btn sm" data-act="reload">↻ Actualiser</button><button class="btn sm" data-act="logout">Se déconnecter</button>`}</div></div>
+   ${showRes?`<div class="card" style="margin-bottom:16px;display:flex;flex-direction:column;gap:10px"><h3>Ressources pour toutes tes clientes</h3><p class="muted">Elles les retrouvent dans « Ressources » de leur appli.</p>
+     ${GRES.map(r=>`<div style="display:flex;gap:10px;align-items:center"><span style="flex:1;min-width:0"><b>${esc(r.titre)}</b> <span class="muted">${esc(r.desc||"")}</span><br><a href="${esc(r.lien)}" target="_blank" rel="noopener" style="color:var(--red);font-size:13px;word-break:break-all">${esc(r.lien)}</a></span><button class="btn sm" data-act="resDel" data-v="${esc(r.id)}">Retirer</button></div>`).join("")||'<p class="muted">Aucune ressource pour l\'instant.</p>'}
+     ${resForm("g")}</div>`:""}
+   <div class="kpis"><div class="kpi"><span>Clientes</span><b>${CL.length}</b></div><div class="kpi"><span>Actives cette semaine</span><b style="color:var(--good)">${act}</b></div><div class="kpi"><span>À relancer</span><b style="color:var(--warn)">${rel}</b></div><div class="kpi"><span>Scripts à corriger</span><b style="color:var(--red)">${sc}</b></div></div>
+   <div class="layout ${c?"has-sel":""}">
+     <div class="list">
+       <div class="chips">${[["all","Toutes"],["relance","À relancer"],["scripts","Scripts à corriger"]].map(([k,l])=>`<button class="chip ${filt===k?"sel":""}" data-act="filt" data-v="${k}">${l}</button>`).join("")}</div>
+       ${list.map(x=>`<button class="cl ${x.id===sel?"sel":""}" data-act="open" data-v="${x.id}"><span class="av">${avH(x)}</span><span class="tx"><b>${esc(x.prenom)}</b><span class="sub">Semaine ${esc(x.semaine)}/13 · ${esc(x.exercices)} exercices · vue ${daysSince(x.derniere_activite)===0?"aujourd'hui":"il y a "+daysSince(x.derniere_activite)+" j"}</span><span class="flags">${flags(x)}</span></span><span class="ring" style="--p:${parseInt(x.aura)||0}"><span>${parseInt(x.aura)||0}%</span></span></button>`).join("")||`<p class="muted" style="padding:20px">Aucune cliente ici.</p>`}
+     </div>
+     <div class="detail">${c?detail(c):`<div class="card"><p class="muted">Choisis une cliente pour voir tout son suivi.</p></div>`}</div>
+   </div>`;
+}
+const resForm = k => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><input class="rin" id="rt-${k}" placeholder="Titre (ex. : Tuto Calendly)"><input class="rin" id="rl-${k}" placeholder="Lien https://…"><input class="rin" id="rd-${k}" placeholder="Petite description" style="grid-column:1/-1"></div><div><button class="btn red sm" data-act="resAdd" data-k="${k}">Ajouter la ressource</button></div>`;
+const qa = (q,a) => `<div class="qa"><div class="q">${esc(q)}</div><div class="a ${a?"":"empty"}">${a?esc(a):"Pas encore rempli"}</div></div>`;
+function detail(c){
+  const d = D(c), st = d.stats||[], f = st[0], l = st[st.length-1], s0 = (d.ans||{}).start||{}, wk = (d.week||{})[iso(monday())]||{};
+  const scripts = d.scripts||[], ms = msgs(c), a1 = (d.ans||{}).a1||{}, a3c = (d.chk||{}).a3||{};
+  return `
+  <button class="btn sm backbtn" data-act="close">‹ Toutes mes clientes</button>
+  <div class="card"><div class="head"><span class="av">${avH(c)}</span><div style="flex:1;min-width:0"><h2>${esc(c.prenom)}</h2><p class="muted">${esc(c.metier)}${c.insta?` · <a href="https://instagram.com/${esc(String(c.insta).replace("@",""))}" target="_blank" rel="noopener" style="color:var(--red)">@${esc(c.insta)}</a>`:""} · code ${esc(c.id)}</p><p class="muted">Début le ${c.debut?fr(c.debut,{day:"numeric",month:"long"}):"?"} · dernière activité ${fr(c.derniere_activite,{day:"numeric",month:"long"})} à ${new Date(c.derniere_activite).toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}</p></div><span class="ring" style="--p:${parseInt(c.aura)||0};width:64px;height:64px"><span>${esc(c.aura)}</span></span></div>
+    <div class="stats"><div><span>Semaine</span><b>${esc(c.semaine)}/13</b></div><div><span>Exercices</span><b>${esc(c.exercices)}</b></div><div><span>Contenus cette semaine</span><b>${esc(c.posts_semaine)}</b></div><div><span>Abonnés</span><b>${l?esc(l.ab):"–"}${f&&l&&st.length>1&&!isNaN(parseInt(l.ab))?` <small style="font-size:13px;color:var(--good)">${(parseInt(String(l.ab).replace(/\s/g,""))-parseInt(String(f.ab).replace(/\s/g,"")))>=0?"+":""}${parseInt(String(l.ab).replace(/\s/g,""))-parseInt(String(f.ab).replace(/\s/g,""))}</small>`:""}</b></div></div></div>
+
+  <div class="card" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:200px"><b>Déblocage de ses applis</b><p class="muted">${c.debloque===true?"Tout est débloqué pour elle.":"Par mois : studio, scripts, stories et DM au mois 2 (ou après l'appel lié), ventes et liens au mois 3."}</p></div><button class="btn sm ${c.debloque===true?"":"red"}" data-act="unlockToggle">${c.debloque===true?"Revenir au déblocage par mois":"🔓 Tout débloquer pour elle"}</button></div>
+
+  <div class="card msg"><h3>Lui laisser un mot</h3><p class="muted">Elle le reçoit dans son appli, avec une notification et ta photo.</p>
+    ${ms.slice(-4).map(m=>`<div class="bubble"><span class="muted" style="font-size:12px">${fr(m.d,{day:"numeric",month:"short"})}${m.script?" · correction de script":""}</span><br>${esc(m.t)}</div>`).join("")}
+    <textarea id="m-txt" placeholder="Bravo pour ta story d'hier…"></textarea><div><button class="btn red" data-act="send">Envoyer</button></div></div>
+
+  <details class="sec" open><summary>💼 Ses ventes <span class="n">${(d.prospects||[]).filter(p=>p.st===4).length} cliente${(d.prospects||[]).filter(p=>p.st===4).length>1?"s":""} · ${eur((d.prospects||[]).filter(p=>p.st===4).reduce((a,p)=>a+(+p.montant||0),0))}</span></summary><div class="secb">
+    <div class="stats" style="grid-template-columns:repeat(5,1fr);margin-top:0">${STAGES.map((s,i)=>`<div><span>${s}</span><b>${(d.prospects||[]).filter(p=>p.st===i&&!p.lost).length}</b></div>`).join("")}</div>
+    ${(d.prospects||[]).filter(p=>p.st===3&&!p.lost).map(p=>`<div>📞 <b>${esc(p.nom)}</b> · appel ${p.appel?"le "+fr(p.appel,{day:"numeric",month:"long"}):"date à fixer"}${p.note?` · <span class="muted">${esc(p.note)}</span>`:""}</div>`).join("")}
+    ${(d.prospects||[]).filter(p=>p.st===4).map(p=>`<div>🎉 <b>${esc(p.nom)}</b> · ${eur(p.montant)}${p.signe?" · signée le "+fr(p.signe,{day:"numeric",month:"long"}):""}</div>`).join("")}
+    ${(()=>{ const N=d.nums||{}, ks=Object.keys(N).sort().slice(-6); return ks.length?`<div style="overflow-x:auto"><table><tr><th>Semaine</th><th>Mots-clés</th><th>DM</th><th>Réponses stories</th><th>Appels</th><th>Ventes</th><th>Abonnés</th></tr>${ks.map(k=>`<tr><td>${fr(k,{day:"numeric",month:"short"})}</td>${["mots","dm","rep","appels","ventes","ab"].map(x=>`<td>${esc(N[k][x]||0)}</td>`).join("")}</tr>`).join("")}</table></div>`:'<p class="muted">Pas encore de chiffres de la semaine.</p>'; })()}
+  </div></details>
+
+  <details class="sec"><summary>🧭 Sa stratégie sur mesure</summary><div class="secb">
+    <p class="muted">Ce que tu écris ici apparaît dans « Mon studio → Stratégie », signé de toi.</p>
+    <textarea id="strat-txt" style="min-height:160px" placeholder="Tes piliers de contenu, ton fil conducteur, tes formats…">${esc(c.strategie||"")}</textarea><div><button class="btn red sm" data-act="stratSave">Enregistrer sa stratégie</button></div>
+    ${STRATF.filter(f=>(d.strat||{})[f[0]]).map(f=>qa("Elle a écrit · "+f[1], d.strat[f[0]])).join("")}
+  </div></details>
+
+  <details class="sec"><summary>📚 Ressources rien que pour elle <span class="n">${(()=>{ try{ return JSON.parse(c.ressources||"[]").length; }catch(e){ return 0; } })()}</span></summary><div class="secb">
+    ${(()=>{ let L=[]; try{ L=JSON.parse(c.ressources||"[]"); }catch(e){} return L.map(r=>`<div style="display:flex;gap:10px;align-items:center"><span style="flex:1;min-width:0"><b>${esc(r.titre)}</b> <span class="muted">${esc(r.desc||"")}</span></span><button class="btn sm" data-act="resDel" data-v="${esc(r.id)}" data-c="1">Retirer</button></div>`).join(""); })()}
+    ${resForm("c")}
+  </div></details>
+
+  <details class="sec"><summary>🎯 Ses objectifs et ses rituels</summary><div class="secb">
+    ${(()=>{ const W=((d.goals||{}).w||{})[iso(monday())]||[], M=((d.goals||{}).m||{})[new Date().toISOString().slice(0,7)]||[]; return `<div><b>Cette semaine</b>${W.map(g=>`<div>${g.d?"✅":"⬜️"} ${esc(g.t)}</div>`).join("")||'<p class="muted">Pas d\'objectifs posés.</p>'}</div><div><b>Ce mois-ci</b>${M.map(g=>`<div>${g.d?"✅":"⬜️"} ${esc(g.t)}</div>`).join("")||'<p class="muted">Pas d\'objectifs posés.</p>'}</div>`; })()}
+    ${(()=>{ const R=d.rituel||{}, m0=monday(); let mm=0, ss=0; for(let j=0;j<7;j++){ const x=new Date(m0); x.setDate(x.getDate()+j); const r=R[iso(x)]||{}; if(r.mDone) mm++; if(r.sDone) ss++; } return `<div class="muted">Rituels cette semaine : ☀️ ${mm} matin${mm>1?"s":""} · 🌙 ${ss} soir${ss>1?"s":""} (le contenu de son carnet reste privé)</div>`; })()}
+  </div></details>
+
+  <details class="sec" ${scripts.some(x=>x.status==="envoye")?"open":""}><summary>🎬 Ses scripts <span class="n">${scripts.length}</span></summary><div class="secb">
+    ${scripts.slice().reverse().map(x=>`<div class="step"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b>${esc(x.title||"Sans titre")}</b><span class="pill ${x.status==="envoye"?"wait":x.status==="corrige"?"ok":"grey"}">${x.status==="envoye"?"À corriger":x.status==="corrige"?"Corrigé":"Brouillon"}</span><span class="muted">${esc(x.date)}</span></div>
+      ${SKEL.filter(s=>(x.parts||{})[s[0]]).map(s=>qa(s[1],x.parts[s[0]])).join("")}
+      ${x.status==="envoye"?`<textarea id="corr-${esc(x.id)}" placeholder="Ta correction…" style="margin-top:10px"></textarea><button class="btn red sm" style="margin-top:8px" data-act="corr" data-v="${esc(x.id)}">Envoyer ma correction</button>`:""}</div>`).join("")||'<p class="muted">Aucun script pour l\'instant.</p>'}</div></details>
+
+  <details class="sec" open><summary>✨ Son point de départ</summary><div class="secb">
+    ${qa("Abonnés",s0.q0)}${qa("Vues sur 30 jours",s0.q1)}${qa("Ventes",s0.q2)}${qa("Objectif 1",s0.q3)}${qa("Objectif 2",s0.q4)}${qa("Objectif 3",s0.q5)}${qa("Pourquoi elle t'a rejointe",s0.q6)}</div></details>
+
+  <details class="sec"><summary>📖 Ses exercices <span class="n">${esc(c.exercices)}</span></summary><div class="secb">
+    ${ALLSTEPS.map(s=>{ const a=(d.ans||{})[s.id]||{}, ch=(d.chk||{})[s.id]||{}; let qi=0, ci=0; const n=Object.values(a).filter(v=>String(v).trim()).length;
+      return `<details class="step"><summary>${(d.done||{})[s.id]?'<span class="pill ok">✓</span>':'<span class="pill grey">…</span>'} ${esc(s.title)} <span class="muted" style="margin-left:auto;font-weight:600">${n} réponse${n>1?"s":""}</span></summary>
+      ${s.ex.f.map(f=>{ if(f.t==="q"){ return qa(f.v, a["q"+(qi++)]); } if(f.t==="check"){ return `<div class="qa">${f.items.map(it=>`<div>${ch["c"+(ci++)]?"✅":"⬜️"} ${esc(it)}</div>`).join("")}</div>`; } return ""; }).join("")}</details>`; }).join("")}</div></details>
+
+  <details class="sec"><summary>🪞 Sa marque</summary><div class="secb">${IDENT.map(x=>qa(x[1],a1[x[0]])).join("")}${INFOS.filter(x=>(d.infos||{})[x[0]]).map(x=>qa(x[1],d.infos[x[0]])).join("")}</div></details>
+
+  <details class="sec"><summary>📅 Sa semaine de contenu <span class="n">${esc(c.posts_semaine)}</span></summary><div class="secb"><div class="weekg">${[0,1,2,3,4,5,6].map(i=>{ const e=wk[i]||{}; return `<div class="${e.ok?"ok":""}"><b>${["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"][i]}</b><br><span class="muted" style="font-size:11.5px">${WEEKPLAN[i]||"Repos"}</span><br>${e.t?esc(e.t):"—"}${e.ok?" ✓":""}</div>`; }).join("")}</div></div></details>
+
+  <details class="sec"><summary>📱 Ses séquences stories <span class="n">${(d.sDrafts||[]).length}</span></summary><div class="secb">${(d.sDrafts||[]).slice().reverse().slice(0,5).map(x=>`<div class="step"><b>${SEQN[x.k]||x.k}</b> <span class="muted">${esc(x.date)}</span>${(x.st||[]).map((s,i)=>qa("Story "+(i+1)+" · "+s.t, s.txt)).join("")}</div>`).join("")||'<p class="muted">Aucune séquence pour l\'instant.</p>'}</div></details>
+
+  <details class="sec"><summary>🎥 Ose te montrer <span class="n">${Object.values(d.fc||{}).filter(x=>x&&x.done).length}/20 défis</span></summary><div class="secb">${FCN.map((L,i)=>`<div><b>Niveau ${i+1} · ${L[0]}</b><br>${L[1].map(x=>{ const F=(d.fc||{})[x[0]]||{}; return `<div>${F.done?"✅":"⬜️"} ${x[1]}${F.done&&(F.avant||F.apres)?` <span class="muted">· appréhension ${F.avant||"–"}/5 → fierté ${F.apres||"–"}/5</span>`:""}${F.note?`<div class="muted" style="margin-left:24px">« ${esc(F.note)} »</div>`:""}</div>`; }).join("")}</div>`).join("")}</div></details>
+
+  <details class="sec"><summary>📈 Son évolution</summary><div class="secb">
+    <div class="compare"><figure>${c.photo_avant?`<img src="${photo(c.photo_avant)}" alt="Avant">`:'<div class="empty">Pas de photo avant</div>'}<figcaption class="muted">Avant</figcaption></figure><figure>${c.photo_apres?`<img src="${photo(c.photo_apres)}" alt="Après">`:'<div class="empty">Pas encore de photo après</div>'}<figcaption class="muted">Après</figcaption></figure></div>
+    ${st.length?`<div style="overflow-x:auto"><table><tr><th>Date</th><th>Abonnés</th><th>Vues 30 j</th><th>Ventes</th></tr>${st.map(x=>`<tr><td>${esc(x.d)}</td><td>${esc(x.ab)}</td><td>${esc(x.vues)}</td><td>${esc(x.ventes)}</td></tr>`).join("")}</table></div>`:""}
+    ${(d.wins||[]).slice().reverse().map(w=>`<div>🏆 <b>${esc(w.d)}</b> · ${esc(w.t)}</div>`).join("")}</div></details>
+
+  <details class="sec"><summary>🤍 Ses témoignages <span class="n">${Object.values(d.temoins||{}).filter(x=>x&&x.sent).length}/4</span></summary><div class="secb">${TEMOINS.map(t=>{ const T=(d.temoins||{})[t[0]]||{}; return qa(t[1]+(T.sent?" · envoyé":""), T.t); }).join("")}<button class="btn sm" data-act="copyTem">Copier ses témoignages</button></div></details>
+
+  <details class="sec"><summary>🌿 Ses habitudes cette semaine</summary><div class="secb">${(d.habits||[]).map((h,i)=>`<div>${esc(h)} · ${[0,1,2,3,4,5,6].map(j=>{ const dd=new Date(monday()); dd.setDate(dd.getDate()+j); return ((d.habitLog||{})[iso(dd)]||{})[i]?"●":"○"; }).join(" ")}</div>`).join("")||'<p class="muted">Rien pour l\'instant.</p>'}</div></details>`;
+}
+document.addEventListener("click", async e=>{
+  const b = e.target.closest("[data-act]"); if(!b) return; const a = b.dataset.act;
+  if(a==="open"){ sel=b.dataset.v; render(); window.scrollTo(0,0); }
+  if(a==="close"){ sel=null; render(); }
+  if(a==="filt"){ filt=b.dataset.v; render(); }
+  if(a==="reload") load();
+  if(a==="logout"){ code=""; try{ localStorage.removeItem("aura_coach_code"); }catch(_){} sel=null; renderLogin(); }
+  if(a==="unlockToggle"){ const c=CL.find(x=>x.id===sel), val=!(c.debloque===true); if(demo){ c.debloque=val; render(); toast("Mis à jour (démo) ✓"); return; }
+    try{ const r=await post({action:"unlock", id:sel, value:val}); if(r.ok){ c.debloque=val; render(); toast(val?"Tout est débloqué pour elle ✓":"Retour au déblocage par mois ✓"); } }catch(_){ toast("Pas de connexion"); } }
+  if(a==="resPanel"){ showRes=!showRes; render(); }
+  if(a==="resAdd"){ const k=b.dataset.k, titre=$("#rt-"+k).value.trim(), lien=$("#rl-"+k).value.trim(), desc=$("#rd-"+k).value.trim(); if(!titre||!lien){ toast("Ajoute un titre et un lien"); return; }
+    const body={action:"resAdd", titre, lien, desc}; if(k==="c") body.id=sel;
+    if(demo){ const it={id:Math.random().toString(36).slice(2,8),titre,lien,desc}; if(k==="c"){ const c=CL.find(x=>x.id===sel); const L=JSON.parse(c.ressources||"[]"); L.push(it); c.ressources=JSON.stringify(L); } else GRES.push(it); render(); toast("Ajoutée (démo) ✓"); return; }
+    try{ const r=await post(body); if(r.ok){ if(k==="c"){ const c=CL.find(x=>x.id===sel); const L=JSON.parse(c.ressources||"[]"); L.push(r.item); c.ressources=JSON.stringify(L); } else GRES.push(r.item); render(); toast("Ressource ajoutée ✓"); } else toast("Ça n'a pas marché, réessaie"); }catch(_){ toast("Pas de connexion"); } }
+  if(a==="resDel"){ const isC=b.dataset.c==="1", body={action:"resDel", rid:b.dataset.v}; if(isC) body.id=sel;
+    const apply=()=>{ if(isC){ const c=CL.find(x=>x.id===sel); c.ressources=JSON.stringify(JSON.parse(c.ressources||"[]").filter(x=>x.id!==b.dataset.v)); } else GRES=GRES.filter(x=>x.id!==b.dataset.v); render(); };
+    if(demo){ apply(); return; } try{ const r=await post(body); if(r.ok){ apply(); toast("Retirée ✓"); } }catch(_){ toast("Pas de connexion"); } }
+  if(a==="stratSave"){ const c=CL.find(x=>x.id===sel), text=$("#strat-txt").value; if(demo){ c.strategie=text; toast("Enregistrée (démo) ✓"); return; }
+    try{ const r=await post({action:"strategy", id:sel, text}); if(r.ok){ c.strategie=text; toast("Sa stratégie est enregistrée ✓ Elle la verra à sa prochaine ouverture"); } }catch(_){ toast("Pas de connexion"); } }
+  if(a==="copyTem"){ const c=CL.find(x=>x.id===sel), t=D(c).temoins||{}; const txt=TEMOINS.filter(x=>(t[x[0]]||{}).t).map(x=>x[1]+" : "+t[x[0]].t).join("\n\n"); try{ await navigator.clipboard.writeText(txt); toast("Témoignages copiés ✓"); }catch(_){ toast("Copie impossible ici"); } }
+  if(a==="send"||a==="corr"){
+    const c = CL.find(x=>x.id===sel), ta = a==="send" ? $("#m-txt") : $("#corr-"+CSS.escape(b.dataset.v)), text = ta.value.trim();
+    if(!text){ toast("Écris ton message d'abord"); return; }
+    const m = {id:Math.random().toString(36).slice(2,8), t:text, d:new Date().toISOString(), script: a==="corr"?b.dataset.v:""};
+    if(demo){ const ms=msgs(c); ms.push(m); c.messages=JSON.stringify(ms); if(a==="corr"){ const x=(D(c).scripts||[]).find(s=>s.id===b.dataset.v); if(x) x.status="corrige"; c.scripts_a_corriger=Math.max(0,c.scripts_a_corriger-1); } render(); toast("Envoyé (démo) ✓"); return; }
+    b.disabled = true;
+    try{ const r = await post({action:"message", id:c.id, text, script:m.script}); if(r.ok){ toast("Envoyé ✓ Elle le verra à sa prochaine ouverture"); const ms=msgs(c); ms.push(m); c.messages=JSON.stringify(ms); render(); } else toast("L'envoi n'a pas marché, réessaie"); }
+    catch(_){ toast("Pas de connexion, réessaie"); b.disabled=false; }
+  }
+});
+load();
+
+</script>
+
+</body></html>
