@@ -36,7 +36,20 @@ h3{font-family:var(--f-serif);font-weight:400;font-size:24px;margin:0}
 .btn.red{background:var(--red);color:#fff;border-color:transparent}
 .btn.sm{padding:7px 12px;font-size:13.5px}
 .demo{background:#fdf5d9;border:1.5px solid #f4e3a3;border-radius:16px;padding:12px 16px;margin-bottom:16px;font-weight:600}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.tabs{display:flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px;margin:0 0 16px;width:max-content;max-width:100%}
+.tab{border-radius:99px;padding:9px 16px;font-weight:800;font-size:14px;color:var(--soft);white-space:nowrap}.tab.sel{background:var(--red);color:#fff}
+.bars{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;align-items:end;height:190px;margin-top:14px}
+.bar{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;min-width:0}
+.bar small{font-size:10.5px;font-weight:800;color:var(--soft);height:14px}
+.bcol{flex:1;width:100%;max-width:34px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:8px;background:#faf3f1;overflow:hidden}
+.bcol i{display:block;width:100%}.bp{background:var(--red)}.bv{background:#f2c9a0}
+.bar span{font-size:10.5px;color:var(--soft);font-weight:700}.bar span.cur{color:var(--red);font-weight:900}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;vertical-align:-1px}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.fgrid label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--soft)}
+.frow{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.frow:first-of-type{border-top:0}
+.fd{width:56px;flex:none;font-size:13px;color:var(--soft);font-weight:700}.fn{flex:1;min-width:0;display:flex;flex-direction:column}.fn .muted{font-size:12.5px}.fm{font-variant-numeric:tabular-nums;white-space:nowrap}
+.frow .flag{border:0;cursor:pointer;font-size:12px;padding:5px 9px}
 .kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;min-width:0}
 .kpi span{color:var(--soft);font-size:13px;font-weight:700}.kpi b{display:block;font-size:30px;font-variant-numeric:tabular-nums}
 .layout{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start}
@@ -94,7 +107,7 @@ td,th{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
 .backbtn{display:none}
 @media (max-width:860px){
   .layout{grid-template-columns:1fr}.list{position:static;max-height:none}
-  .kpis{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}
+  .kpis{grid-template-columns:1fr 1fr}.kpi b{font-size:23px}.fgrid{grid-template-columns:1fr 1fr}.frow{flex-wrap:wrap}.fn{flex-basis:calc(100% - 70px)}.bars{gap:3px}.bar small{font-size:9px}.bar span{font-size:9px}.stats{grid-template-columns:1fr 1fr}
   .layout.has-sel .list{display:none}.layout:not(.has-sel) .detail{display:none}.backbtn{display:inline-flex}
 }
 </style>
@@ -284,6 +297,10 @@ const fr = (d,o) => new Date(d).toLocaleDateString("fr-FR", o);
 const daysSince = d => d ? Math.floor((Date.now()-new Date(d))/864e5) : 999;
 const photo = id => id ? `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w800` : "";
 let code = ""; try{ code = localStorage.getItem("aura_coach_code")||""; }catch(e){}
+let confirmDel = false, view = "clientes", FIN = [], finYear = new Date().getFullYear(), finEdit = null;
+const isDone = c => c.statut === "terminee";
+const dIn = v => { if(!v) return ""; if(/^\d{4}-\d\d-\d\d$/.test(String(v))) return String(v); const d = new Date(v); return isNaN(d) ? "" : iso(d); };
+const MOIS = ["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
 let CL = [], sel = null, filt = "all", demo = !API;
 let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.hidden=false; clearTimeout(tt); tt=setTimeout(()=>t.hidden=true,2600); }
 async function post(body){ const r = await fetch(API,{method:"POST",body:JSON.stringify(Object.assign({code},body))}); return r.json(); }
@@ -299,12 +316,13 @@ function demoData(){
   ];
 }
 async function load(){
-  if(demo){ CL = demoData(); GRES=[{id:"g1",titre:"Exemple · Tuto Calendly",lien:"https://calendly.com",desc:"Vidéo de 5 min"}]; render(); return; }
+  if(demo){ CL = demoData(); const y=new Date().getFullYear(); FIN=[{id:"f1",date:y+"-01-12",cliente:"Exemple · Lina",offre:"Aura Magnétique",montant:1500,statut:"paye",note:""},{id:"f2",date:iso(new Date()),cliente:"Exemple · Julie",offre:"Aura Magnétique",montant:500,statut:"paye",note:"Paiement 1/3"},{id:"f3",date:iso(new Date(Date.now()+30*864e5)),cliente:"Exemple · Julie",offre:"Aura Magnétique",montant:500,statut:"a_venir",note:"Paiement 2/3"}]; GRES=[{id:"g1",titre:"Exemple · Tuto Calendly",lien:"https://calendly.com",desc:"Vidéo de 5 min"}]; render(); return; }
   if(!code){ renderLogin(); return; }
   $("#app").innerHTML = `<p class="muted" style="padding:40px;text-align:center">Je récupère tes clientes…</p>`;
   try{ const r = await post({action:"list"}); if(!r.ok){ if(r.error==="code"){ code=""; try{localStorage.removeItem("aura_coach_code");}catch(e){} renderLogin("Ce code n'est pas le bon."); return; } throw 0; }
     CL = r.clientes.sort((a,b)=>new Date(b.derniere_activite)-new Date(a.derniere_activite));
     try{ const g = await post({action:"resList"}); GRES = g.resources||[]; }catch(_){}
+    try{ const f = await post({action:"finList"}); FIN = f.items||[]; }catch(_){}
     render(); }
   catch(e){ $("#app").innerHTML = `<div class="login"><h2>Pas de connexion</h2><p class="muted">Je n'arrive pas à joindre ton Google Sheet. Vérifie ta connexion, puis réessaie.</p><button class="btn red" data-act="reload">Réessayer</button></div>`; }
 }
@@ -321,24 +339,59 @@ function flags(c){ const f=[], n=daysSince(c.derniere_activite);
   const t=D(c).temoins||{}; const nt=Object.values(t).filter(x=>x&&x.sent).length; if(nt) f.push(`<span class="flag ok">🤍 ${nt} témoignage${nt>1?"s":""}</span>`);
   return f.join(""); }
 const avH = c => c.photo_avant ? `<img src="${photo(c.photo_avant)}" alt="">` : esc((c.prenom||"?").replace("Exemple · ","").charAt(0));
+const kfmt = n => !n ? "" : n<1000 ? String(Math.round(n)) : (Math.round(n/100)/10).toLocaleString("fr-FR")+"k";
+function biz(){
+  const now=new Date(), Y=finYear, inY=FIN.filter(x=>String(x.date).slice(0,4)==String(Y));
+  const paid=inY.filter(x=>x.statut!=="a_venir"), todo=FIN.filter(x=>x.statut==="a_venir");
+  const sum=L=>L.reduce((a,x)=>a+(+x.montant||0),0);
+  const mKey=iso(now).slice(0,7), thisM=sum(FIN.filter(x=>x.statut!=="a_venir"&&String(x.date).slice(0,7)===mKey));
+  const names=[...new Set(paid.map(x=>x.cliente.trim().toLowerCase()))].length;
+  const byM=MOIS.map((_,i)=>{ const k=Y+"-"+String(i+1).padStart(2,"0"); const L=inY.filter(x=>String(x.date).slice(0,7)===k); return {p:sum(L.filter(x=>x.statut!=="a_venir")), v:sum(L.filter(x=>x.statut==="a_venir"))}; });
+  const mx=Math.max(1,...byM.map(m=>m.p+m.v));
+  const years=[...new Set(FIN.map(x=>+String(x.date).slice(0,4)).filter(Boolean).concat([now.getFullYear()]))].sort((a,b)=>b-a);
+  const E=FIN.find(x=>x.id===finEdit)||{date:iso(now),cliente:"",offre:"Aura Magnétique",montant:"",statut:"paye",note:""};
+  const rows=inY.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  return `<div class="kpis">
+    <div class="kpi"><span>Encaissé ce mois-ci</span><b style="color:var(--good)">${eur(thisM)}</b></div>
+    <div class="kpi"><span>Encaissé en ${Y}</span><b>${eur(sum(paid))}</b></div>
+    <div class="kpi"><span>À venir</span><b style="color:var(--warn)">${eur(sum(todo))}</b></div>
+    <div class="kpi"><span>Clientes en ${Y}</span><b>${names}</b></div>
+    <div class="kpi"><span>Panier moyen</span><b>${names?eur(sum(paid)/names):"–"}</b></div></div>
+   <div class="card" style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h3 style="margin:0">Mois par mois</h3><div class="chips" style="margin:0">${years.map(y=>`<button class="chip ${y===Y?"sel":""}" data-act="finYear" data-v="${y}">${y}</button>`).join("")}</div></div>
+     <div class="bars">${byM.map((m,i)=>`<div class="bar" title="${MOIS[i]} : ${eur(m.p)} encaissé${m.v?", "+eur(m.v)+" à venir":""}"><small>${kfmt(m.p+m.v)}</small><div class="bcol"><i class="bv" style="height:${m.v/mx*100}%"></i><i class="bp" style="height:${m.p/mx*100}%"></i></div><span class="${Y===now.getFullYear()&&i===now.getMonth()?"cur":""}">${MOIS[i]}</span></div>`).join("")}</div>
+     <p class="muted" style="font-size:13px;margin-top:8px"><i class="dot bp"></i> encaissé · <i class="dot bv"></i> à venir</p></div>
+   <div class="card" id="fin-form" style="margin-bottom:16px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0">${finEdit?"Modifier ce paiement":"Ajouter un paiement"}</h3>
+     <p class="muted" style="font-size:13px">Un paiement en plusieurs fois ? Ajoute une ligne par paiement (ex. : « Paiement 1/3 ») et mets les prochains en « À venir ».</p>
+     <div class="fgrid"><label>Date<input class="rin" type="date" id="fi-date" value="${esc(dIn(E.date))}"></label>
+       <label>Cliente<input class="rin" id="fi-cl" list="fi-cls" value="${esc(E.cliente)}" placeholder="Prénom"><datalist id="fi-cls">${[...new Set(CL.map(c=>c.prenom).concat(FIN.map(x=>x.cliente)))].filter(Boolean).map(n=>`<option value="${esc(n)}">`).join("")}</datalist></label>
+       <label>Offre<input class="rin" id="fi-of" value="${esc(E.offre)}"></label>
+       <label>Montant (€)<input class="rin" id="fi-mt" inputmode="decimal" value="${esc(E.montant)}" placeholder="1500"></label>
+       <label>Statut<select class="rin" id="fi-st"><option value="paye" ${E.statut!=="a_venir"?"selected":""}>✅ Encaissé</option><option value="a_venir" ${E.statut==="a_venir"?"selected":""}>⏳ À venir</option></select></label>
+       <label>Note<input class="rin" id="fi-no" value="${esc(E.note)}" placeholder="Paiement 1/3, virement…"></label></div>
+     <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn red" data-act="finSave">${finEdit?"Enregistrer":"Ajouter"}</button>${finEdit?`<button class="btn" data-act="finCancel">Annuler</button>`:""}</div></div>
+   <div class="card" style="display:flex;flex-direction:column;gap:2px"><h3 style="margin:0 0 6px">Mes paiements ${Y}</h3>
+     ${rows.map(x=>`<div class="frow"><span class="fd">${fr(dIn(x.date)+"T12:00",{day:"numeric",month:"short"})}</span><span class="fn"><b>${esc(x.cliente)}</b><span class="muted">${esc(x.offre)}${x.note?" · "+esc(x.note):""}</span></span><b class="fm">${eur(x.montant)}</b><button class="flag ${x.statut==="a_venir"?"warn":"ok"}" data-act="finToggle" data-v="${esc(x.id)}">${x.statut==="a_venir"?"⏳ À venir":"✅ Encaissé"}</button><button class="btn sm" data-act="finEdit" data-v="${esc(x.id)}" aria-label="Modifier">✎</button><button class="btn sm" data-act="finDel" data-v="${esc(x.id)}" aria-label="Supprimer">🗑</button></div>`).join("")||'<p class="muted">Aucun paiement pour cette année. Ajoute ton premier juste au-dessus 💛</p>'}</div>`;
+}
 function render(){
-  const act = CL.filter(c=>daysSince(c.derniere_activite)<4).length, rel = CL.filter(c=>daysSince(c.derniere_activite)>=4).length, sc = CL.reduce((a,c)=>a+(+c.scripts_a_corriger||0),0);
-  const list = CL.filter(c=> filt==="all" || (filt==="relance" && daysSince(c.derniere_activite)>=4) || (filt==="scripts" && +c.scripts_a_corriger>0));
+  const ON = CL.filter(c=>!isDone(c));
+  const act = ON.filter(c=>daysSince(c.derniere_activite)<4).length, rel = ON.filter(c=>daysSince(c.derniere_activite)>=4).length, sc = ON.reduce((a,c)=>a+(+c.scripts_a_corriger||0),0);
+  const list = filt==="fini" ? CL.filter(isDone) : ON.filter(c=> filt==="all" || (filt==="relance" && daysSince(c.derniere_activite)>=4) || (filt==="scripts" && +c.scripts_a_corriger>0));
   const c = CL.find(x=>x.id===sel);
   $("#app").innerHTML = `
    ${demo?`<div class="demo">👀 Mode démo : ces 3 clientes sont des exemples. Dès que ton Google Sheet est branché, tu verras tes vraies clientes ici.</div>`:""}
-   <div class="top"><div><span class="hand">bonjour ${COACH}</span><h1>Mes <em>clientes</em></h1></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="resPanel">📚 Ressources pour toutes</button>${demo?"":`<button class="btn sm" data-act="reload">↻ Actualiser</button><button class="btn sm" data-act="logout">Se déconnecter</button>`}</div></div>
+   <div class="top"><div><span class="hand">bonjour ${COACH}</span><h1>${view==="biz"?"Mon <em>business</em>":"Mes <em>clientes</em>"}</h1></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="resPanel">📚 Ressources pour toutes</button>${demo?"":`<button class="btn sm" data-act="reload">↻ Actualiser</button><button class="btn sm" data-act="logout">Se déconnecter</button>`}</div></div>
    ${showRes?`<div class="card" style="margin-bottom:16px;display:flex;flex-direction:column;gap:10px"><h3>Ressources pour toutes tes clientes</h3><p class="muted">Elles les retrouvent dans « Ressources » de leur appli.</p>
      ${GRES.map(r=>`<div style="display:flex;gap:10px;align-items:center"><span style="flex:1;min-width:0"><b>${esc(r.titre)}</b> <span class="muted">${esc(r.desc||"")}</span><br><a href="${esc(r.lien)}" target="_blank" rel="noopener" style="color:var(--red);font-size:13px;word-break:break-all">${esc(r.lien)}</a></span><button class="btn sm" data-act="resDel" data-v="${esc(r.id)}">Retirer</button></div>`).join("")||'<p class="muted">Aucune ressource pour l\'instant.</p>'}
      ${resForm("g")}</div>`:""}
-   <div class="kpis"><div class="kpi"><span>Clientes</span><b>${CL.length}</b></div><div class="kpi"><span>Actives cette semaine</span><b style="color:var(--good)">${act}</b></div><div class="kpi"><span>À relancer</span><b style="color:var(--warn)">${rel}</b></div><div class="kpi"><span>Scripts à corriger</span><b style="color:var(--red)">${sc}</b></div></div>
+   <div class="tabs"><button class="tab ${view==="clientes"?"sel":""}" data-act="view" data-v="clientes">👩🏻‍💻 Mes clientes</button><button class="tab ${view==="biz"?"sel":""}" data-act="view" data-v="biz">💰 Mon chiffre d'affaires</button></div>
+   ${view==="biz"?biz():`<div class="kpis"><div class="kpi"><span>Clientes en cours</span><b>${ON.length}</b></div><div class="kpi"><span>Actives cette semaine</span><b style="color:var(--good)">${act}</b></div><div class="kpi"><span>À relancer</span><b style="color:var(--warn)">${rel}</b></div><div class="kpi"><span>Scripts à corriger</span><b style="color:var(--red)">${sc}</b></div></div>
    <div class="layout ${c?"has-sel":""}">
      <div class="list">
-       <div class="chips">${[["all","Toutes"],["relance","À relancer"],["scripts","Scripts à corriger"]].map(([k,l])=>`<button class="chip ${filt===k?"sel":""}" data-act="filt" data-v="${k}">${l}</button>`).join("")}</div>
+       <div class="chips">${[["all","En cours"],["relance","À relancer"],["scripts","Scripts à corriger"],["fini","Terminées"+(CL.filter(isDone).length?" ("+CL.filter(isDone).length+")":"")]].map(([k,l])=>`<button class="chip ${filt===k?"sel":""}" data-act="filt" data-v="${k}">${l}</button>`).join("")}</div>
        ${list.map(x=>`<button class="cl ${x.id===sel?"sel":""}" data-act="open" data-v="${x.id}"><span class="av">${avH(x)}</span><span class="tx"><b>${esc(x.prenom)}</b><span class="sub">Semaine ${esc(x.semaine)}/13 · ${esc(x.exercices)} exercices · vue ${daysSince(x.derniere_activite)===0?"aujourd'hui":"il y a "+daysSince(x.derniere_activite)+" j"}</span><span class="flags">${flags(x)}</span></span><span class="ring" style="--p:${parseInt(x.aura)||0}"><span>${parseInt(x.aura)||0}%</span></span></button>`).join("")||`<p class="muted" style="padding:20px">Aucune cliente ici.</p>`}
      </div>
      <div class="detail">${c?detail(c):`<div class="card"><p class="muted">Choisis une cliente pour voir tout son suivi.</p></div>`}</div>
-   </div>`;
+   </div>`}`;
 }
 const resForm = k => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><input class="rin" id="rt-${k}" placeholder="Titre (ex. : Tuto Calendly)"><input class="rin" id="rl-${k}" placeholder="Lien https://…"><input class="rin" id="rd-${k}" placeholder="Petite description" style="grid-column:1/-1"></div><div><button class="btn red sm" data-act="resAdd" data-k="${k}">Ajouter la ressource</button></div>`;
 const qa = (q,a) => `<div class="qa"><div class="q">${esc(q)}</div><div class="a ${a?"":"empty"}">${a?esc(a):"Pas encore rempli"}</div></div>`;
@@ -347,9 +400,13 @@ function detail(c){
   const scripts = d.scripts||[], ms = msgs(c), a1 = (d.ans||{}).a1||{}, a3c = (d.chk||{}).a3||{};
   return `
   <button class="btn sm backbtn" data-act="close">‹ Toutes mes clientes</button>
-  <div class="card"><div class="head"><span class="av">${avH(c)}</span><div style="flex:1;min-width:0"><h2>${esc(c.prenom)}</h2><p class="muted">${esc(c.metier)}${c.insta?` · <a href="https://instagram.com/${esc(String(c.insta).replace("@",""))}" target="_blank" rel="noopener" style="color:var(--red)">@${esc(c.insta)}</a>`:""} · code ${esc(c.id)}</p><p class="muted">Début le ${c.debut?fr(c.debut,{day:"numeric",month:"long"}):"?"} · dernière activité ${fr(c.derniere_activite,{day:"numeric",month:"long"})} à ${new Date(c.derniere_activite).toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}</p></div><span class="ring" style="--p:${parseInt(c.aura)||0};width:64px;height:64px"><span>${esc(c.aura)}</span></span></div>
+  <div class="card"><div class="head"><span class="av">${avH(c)}</span><div style="flex:1;min-width:0"><h2>${esc(c.prenom)}</h2><p class="muted">${esc(c.metier)}${c.insta?` · <a href="https://instagram.com/${esc(String(c.insta).replace("@",""))}" target="_blank" rel="noopener" style="color:var(--red)">@${esc(c.insta)}</a>`:""} · code ${esc(c.id)}</p><p class="muted">Début le ${(dIn(c.debut_coach)||dIn(c.debut))?fr((dIn(c.debut_coach)||dIn(c.debut))+"T12:00",{day:"numeric",month:"long"}):"?"} · dernière activité ${fr(c.derniere_activite,{day:"numeric",month:"long"})} à ${new Date(c.derniere_activite).toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}</p></div><span class="ring" style="--p:${parseInt(c.aura)||0};width:64px;height:64px"><span>${esc(c.aura)}</span></span></div>
     <div class="stats"><div><span>Semaine</span><b>${esc(c.semaine)}/13</b></div><div><span>Exercices</span><b>${esc(c.exercices)}</b></div><div><span>Contenus cette semaine</span><b>${esc(c.posts_semaine)}</b></div><div><span>Abonnés</span><b>${l?esc(l.ab):"–"}${f&&l&&st.length>1&&!isNaN(parseInt(l.ab))?` <small style="font-size:13px;color:var(--good)">${(parseInt(String(l.ab).replace(/\s/g,""))-parseInt(String(f.ab).replace(/\s/g,"")))>=0?"+":""}${parseInt(String(l.ab).replace(/\s/g,""))-parseInt(String(f.ab).replace(/\s/g,""))}</small>`:""}</b></div></div></div>
 
+  <div class="card" style="display:flex;flex-direction:column;gap:10px"><b>Son accompagnement ${isDone(c)?'<span class="flag ok">✓ Terminé</span>':""}</b>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label for="st-date" class="muted" style="font-size:14px">Date de début</label><input class="rin" type="date" id="st-date" value="${esc(dIn(c.debut_coach)||dIn(c.debut))}" style="width:auto"><button class="btn sm red" data-act="startSave">Enregistrer la date</button></div>
+    <p class="muted" style="font-size:13px">C'est cette date qui débloque ses applis du mois 2 et du mois 3. Elle se met à jour dans son appli à sa prochaine ouverture.</p>
+    <div><button class="btn sm" data-act="statusToggle">${isDone(c)?"↺ Remettre en cours":"🎓 Accompagnement terminé"}</button></div></div>
   <div class="card" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:200px"><b>Déblocage de ses applis</b><p class="muted">${c.debloque===true?"Tout est débloqué pour elle.":"Par mois : studio, scripts, stories et DM au mois 2 (ou après l'appel lié), ventes et liens au mois 3."}</p></div><button class="btn sm ${c.debloque===true?"":"red"}" data-act="unlockToggle">${c.debloque===true?"Revenir au déblocage par mois":"🔓 Tout débloquer pour elle"}</button></div>
 
   <div class="card msg"><h3>Lui laisser un mot</h3><p class="muted">Elle le reçoit dans son appli, avec une notification et ta photo.</p>
@@ -407,11 +464,37 @@ function detail(c){
 
   <details class="sec"><summary>🤍 Ses témoignages <span class="n">${Object.values(d.temoins||{}).filter(x=>x&&x.sent).length}/4</span></summary><div class="secb">${TEMOINS.map(t=>{ const T=(d.temoins||{})[t[0]]||{}; return qa(t[1]+(T.sent?" · envoyé":""), T.t); }).join("")}<button class="btn sm" data-act="copyTem">Copier ses témoignages</button></div></details>
 
-  <details class="sec"><summary>🌿 Ses habitudes cette semaine</summary><div class="secb">${(d.habits||[]).map((h,i)=>`<div>${esc(h)} · ${[0,1,2,3,4,5,6].map(j=>{ const dd=new Date(monday()); dd.setDate(dd.getDate()+j); return ((d.habitLog||{})[iso(dd)]||{})[i]?"●":"○"; }).join(" ")}</div>`).join("")||'<p class="muted">Rien pour l\'instant.</p>'}</div></details>`;
+  <details class="sec"><summary>🌿 Ses habitudes cette semaine</summary><div class="secb">${(d.habits||[]).map((h,i)=>`<div>${esc(h)} · ${[0,1,2,3,4,5,6].map(j=>{ const dd=new Date(monday()); dd.setDate(dd.getDate()+j); return ((d.habitLog||{})[iso(dd)]||{})[i]?"●":"○"; }).join(" ")}</div>`).join("")||'<p class="muted">Rien pour l\'instant.</p>'}</div></details>
+  <div class="card" style="margin-top:18px;border-color:#e8c4cc">${confirmDel?`<b>Supprimer ${esc(c.prenom||"cette cliente")} ?</b><p class="muted">Elle disparaît de ton Espace coach et de ton Google Sheet. Ça ne peut pas être annulé.</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn red sm" data-act="delYes">Oui, supprimer</button><button class="btn sm" data-act="delNo">Annuler</button></div>`:`<button class="btn sm" style="color:var(--red)" data-act="del">🗑 Supprimer cette cliente</button>`}</div>`;
 }
 document.addEventListener("click", async e=>{
   const b = e.target.closest("[data-act]"); if(!b) return; const a = b.dataset.act;
-  if(a==="open"){ sel=b.dataset.v; render(); window.scrollTo(0,0); }
+  if(a==="del"){ confirmDel=true; render(); }
+  if(a==="delNo"){ confirmDel=false; render(); }
+  if(a==="delYes"){ const id=sel; confirmDel=false; if(demo){ CL=CL.filter(x=>x.id!==id); sel=null; render(); toast("Supprimée (démo) ✓"); return; }
+    try{ const r=await post({action:"delete", id}); if(r.ok){ CL=CL.filter(x=>x.id!==id); sel=null; render(); toast("Cliente supprimée ✓"); } else toast("Ça n'a pas marché, réessaie"); }catch(_){ toast("Pas de connexion"); } }
+  if(a==="view"){ view=b.dataset.v; sel=null; finEdit=null; render(); window.scrollTo(0,0); }
+  if(a==="startSave"){ const c=CL.find(x=>x.id===sel), v=$("#st-date").value; if(!v){ toast("Choisis une date"); return; }
+    if(demo){ c.debut_coach=v; render(); toast("Date enregistrée (démo) ✓"); return; }
+    try{ const r=await post({action:"setStart", id:sel, value:v}); if(r.ok){ c.debut_coach=v; render(); toast("Date enregistrée ✓"); } else toast("Ça n'a pas marché, réessaie"); }catch(_){ toast("Pas de connexion"); } }
+  if(a==="statusToggle"){ const c=CL.find(x=>x.id===sel), v=isDone(c)?"":"terminee";
+    if(!demo){ try{ const r=await post({action:"setStatus", id:sel, value:v}); if(!r.ok){ toast("Ça n'a pas marché, réessaie"); return; } }catch(_){ toast("Pas de connexion"); return; } }
+    c.statut=v; sel=null; render(); toast(v?"Rangée dans « Terminées » 🎓":"Remise dans « En cours » ✓"); }
+  if(a==="finYear"){ finYear=+b.dataset.v; finEdit=null; render(); }
+  if(a==="finEdit"){ finEdit=b.dataset.v; render(); const f=$("#fin-form"); if(f) f.scrollIntoView({behavior:"smooth",block:"center"}); }
+  if(a==="finCancel"){ finEdit=null; render(); }
+  if(a==="finToggle"){ const it=FIN.find(x=>x.id===b.dataset.v); if(!it) return; const nx=Object.assign({},it,{statut:it.statut==="paye"?"a_venir":"paye"});
+    if(!demo){ try{ const r=await post({action:"finSave", item:nx}); if(!r.ok){ toast("Ça n'a pas marché"); return; } }catch(_){ toast("Pas de connexion"); return; } }
+    Object.assign(it,nx); render(); toast(nx.statut==="paye"?"Marqué comme encaissé 💰":"Marqué à venir"); }
+  if(a==="finDel"){ const id=b.dataset.v; if(b.dataset.ok!=="1"){ b.dataset.ok="1"; b.textContent="Sûre ?"; return; }
+    if(!demo){ try{ const r=await post({action:"finDel", fid:id}); if(!r.ok){ toast("Ça n'a pas marché"); return; } }catch(_){ toast("Pas de connexion"); return; } }
+    FIN=FIN.filter(x=>x.id!==id); if(finEdit===id) finEdit=null; render(); toast("Supprimé ✓"); }
+  if(a==="finSave"){ const it={id:finEdit||"", date:$("#fi-date").value, cliente:$("#fi-cl").value.trim(), offre:$("#fi-of").value.trim(), montant:parseFloat(String($("#fi-mt").value).replace(",","."))||0, statut:$("#fi-st").value, note:$("#fi-no").value.trim()};
+    if(!it.date||!it.cliente||!it.montant){ toast("Ajoute au moins la date, la cliente et le montant"); return; }
+    b.disabled=true;
+    if(demo) it.id=it.id||"d"+Date.now(); else { try{ const r=await post({action:"finSave", item:it}); if(!r.ok) throw 0; it.id=r.id; }catch(_){ b.disabled=false; toast("Pas de connexion"); return; } }
+    const i=FIN.findIndex(x=>x.id===it.id); if(i>=0) FIN[i]=it; else FIN.push(it); finYear=+it.date.slice(0,4); finEdit=null; render(); toast("Enregistré 💰"); }
+  if(a==="open"){ confirmDel=false; sel=b.dataset.v; render(); window.scrollTo(0,0); }
   if(a==="close"){ sel=null; render(); }
   if(a==="filt"){ filt=b.dataset.v; render(); }
   if(a==="reload") load();

@@ -507,7 +507,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--red);flex:none}
 /* ====== Liens de Cédryna ====== */
 const CONFIG = {
   coach: "Cédryna",
-  insta: "",                // ton @ Instagram, sans le @
+  insta: "cedryna_fb",      // ton @ Instagram, sans le @
   groupe: "https://chat.whatsapp.com/BF23MZVwVxj5hPCFgDYzqi",
   prive: "https://wa.me/cedrynafb?s=p",
   calendly: "https://calendly.com/cedrynafb-pro/audit-1-1",
@@ -546,7 +546,7 @@ async function sync(){
       posts:[0,1,2,3,4,5].filter(i=>(wk0[i]||{}).ok).length+"/6", scripts:S.scripts.filter(x=>x.status==="envoye").length,
       prospectes:(S.prospects||[]).filter(p=>p.st<4&&!p.lost).length, clientes:(S.prospects||[]).filter(p=>p.st===4).length,
       ca:(S.prospects||[]).filter(p=>p.st===4).reduce((a,p)=>a+(+p.montant||0),0), data:syncData()});
-    if(r && r.ok){ if(typeof r.strategy==="string") S.coachStrat=r.strategy; if(typeof r.unlock==="boolean") S.unlockAll=r.unlock; if(Array.isArray(r.resources)) S.coachRes=r.resources; if(Array.isArray(r.messages)) gotMessages(r.messages); else try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+    if(r && r.ok){ if(typeof r.strategy==="string") S.coachStrat=r.strategy; if(typeof r.unlock==="boolean") S.unlockAll=r.unlock; if(Array.isArray(r.resources)) S.coachRes=r.resources; if(typeof r.start==="string" && /^\d{4}-\d\d-\d\d$/.test(r.start) && r.start!==S.start){ S.start=r.start; S.startByCoach=true; } if(Array.isArray(r.messages)) gotMessages(r.messages); else try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
     for(const k of ["avant","apres"]) if(S[k] && !S.photoSync[k]){ const p = await post({action:"photo", id:S.cid, kind:k, data:S[k]}); if(p && p.ok){ S.photoSync[k]=true; localStorage.setItem(KEY, JSON.stringify(S)); } }
   }catch(e){ /* hors ligne : on réessaiera plus tard */ }
   syncing = false;
@@ -1048,7 +1048,7 @@ APPS.reglages = { title:"Réglages", render(){ return { html: `
    <div class="field"><label for="s-prenom">Mon prénom</label><input class="input" id="s-prenom" data-act="set" data-k="prenom" value="${esc(S.prenom)}"></div>
    <div class="field"><label for="s-insta">Mon compte Instagram</label><input class="input" id="s-insta" data-act="set" data-k="insta" value="${esc(S.insta)}" placeholder="@toncompte"><small>Pour ouvrir directement ton profil dans l'appli Instagram.</small></div>
    <div class="field"><label for="s-metier">Mon métier</label><input class="input" id="s-metier" data-act="set" data-k="metier" value="${esc(S.metier)}"></div>
-   <div class="field"><label for="s-start">Début de mon accompagnement</label><input class="input" type="date" id="s-start" data-act="set" data-k="start" value="${esc(S.start)}"></div>
+   <div class="field"><label for="s-start">Début de mon accompagnement</label><input class="input" type="date" id="s-start" data-act="set" data-k="start" value="${esc(S.start)}">${S.startByCoach?`<p class="muted" style="font-size:13px;margin-top:4px">${esc(CONFIG.coach)} a ajusté cette date pour toi.</p>`:""}</div>
    <div class="field"><span class="flabel">Mon fond d'écran</span>
      <label class="btn block" for="s-photo">📷 ${S.photo?"Changer ma photo":"Choisir une photo"}</label><input type="file" accept="image/*" id="s-photo" hidden>
      <div class="row" style="gap:10px">${WALLS.map(c=>`<button style="width:44px;height:44px;border-radius:50%;background:${c};border:3px solid #fff;box-shadow:0 0 0 ${S.wall===c&&!S.photo?2:1}px ${S.wall===c&&!S.photo?"var(--red)":"var(--line)"}" data-act="wall" data-v="${c}" aria-label="Couleur de fond"></button>`).join("")}<button style="width:44px;height:44px;border-radius:50%;background:linear-gradient(175deg,#f3c3cc,#7e2236);border:3px solid #fff;box-shadow:0 0 0 1px var(--line)" data-act="wall" data-v="" aria-label="Fond Aura"></button></div>
@@ -1071,6 +1071,7 @@ function showWelcome(){
     <div class="field"><label for="w-insta">Ton compte Instagram</label><input class="input" id="w-insta" placeholder="@toncompte" value="${esc(S.insta)}"></div>
     <div class="field"><label for="w-metier">Ton métier</label><input class="input" id="w-metier" placeholder="Ex. : naturopathe, coach, sophrologue…" value="${esc(S.metier)}"></div>
     <div class="field"><label for="w-start">Le début de ton accompagnement</label><input class="input" type="date" id="w-start" value="${S.start||today()}"></div>
+    <p class="muted" style="font-size:13px;line-height:1.45;text-align:center;margin:2px 4px 0">🔒 Ce que tu écris ici est partagé uniquement avec ${esc(CONFIG.coach)}, ta coach, pour t'accompagner. Rien n'est vendu ni montré à qui que ce soit d'autre, et tu peux demander à tout effacer à la fin de ton accompagnement.</p>
     <button class="btn red block" data-act="wNext">Continuer</button>
     ${CONFIG.api?`<button class="linkbtn" style="align-self:center;font-size:15px" data-act="wRestore">J'ai déjà mon espace : je le retrouve</button>`:""}`,
    `<span class="hand">étape 2 sur 3</span><h1 class="h2">Ta photo de départ 📸</h1>
