@@ -1893,9 +1893,15 @@ function tickSb(){ const t=$("#sb-time"); if(t) t.textContent = clock(); }
 tickSb(); setInterval(tickSb, 15000);
 applyLook(); renderLock(); renderHome(); bindSwipe();
 if(!S.prenom) showWelcome();
+/* Journal de connexion : chaque ouverture de l'appli devient une session (début → fin), visible par la coach */
+function sessTick(){ if(document.visibilityState!=="visible") return; const now=Date.now(); if(!Array.isArray(S.sessions)) S.sessions=[];
+  const L=S.sessions[S.sessions.length-1];
+  if(L && now-L.e < 10*60000) L.e=now; else { S.sessions.push({s:now,e:now}); if(S.sessions.length>80) S.sessions=S.sessions.slice(-80); }
+  try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+sessTick(); setInterval(sessTick, 60000);
 setTimeout(sync, 1500);
-setInterval(()=>{ if(document.visibilityState==="visible") sync(); }, 180000);
-document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="visible") sync(); });
+setInterval(()=>{ if(document.visibilityState==="visible") sync(); }, 120000);
+document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="visible"){ sessTick(); sync(); } else { const L=(S.sessions||[]).slice(-1)[0]; if(L){ L.e=Date.now(); try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} } sync(); } });
 setInterval(()=>{ const c=document.querySelector(".lclock"); if(c && !$("#lock").classList.contains("gone")) c.textContent=clock(); const h=document.querySelector(".hero .hc"); if(h) h.textContent=clock(); }, 20000);
 
 </script>

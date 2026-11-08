@@ -49,6 +49,12 @@ h3{font-family:var(--f-serif);font-weight:400;font-size:24px;margin:0}
 .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.fgrid label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--soft)}
 .frow{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.frow:first-of-type{border-top:0}
 .fd{width:56px;flex:none;font-size:13px;color:var(--soft);font-weight:700}.fn{flex:1;min-width:0;display:flex;flex-direction:column}.fn .muted{font-size:12.5px}.fm{font-variant-numeric:tabular-nums;white-space:nowrap}
+.cx7{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cxd{display:flex;flex-direction:column;align-items:center;gap:4px}.cxd i{width:34px;height:34px;border-radius:50%;background:#f4ece9;display:grid;place-items:center;font-style:normal;font-weight:900;color:#fff}
+.cxd.on i{background:var(--good)}.cxd span{font-size:11.5px;font-weight:700;color:var(--soft);text-transform:capitalize}
+.cxl{display:flex;flex-direction:column}.cxl div{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-top:1px solid var(--line);font-size:14px}.cxl div:first-child{border-top:0}
+.cxl span{flex:1;color:var(--soft);font-weight:700}.cxl b{font-variant-numeric:tabular-nums}.cxl em{font-style:normal;color:var(--soft);font-size:13px;min-width:52px;text-align:right}
+.avw{position:relative;flex:none;display:flex}.live{position:absolute;right:-1px;bottom:-1px;width:13px;height:13px;border-radius:50%;background:#2fbf63;border:2.5px solid #fff}
 .frow .flag{border:0;cursor:pointer;font-size:12px;padding:5px 9px}
 .kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;min-width:0}
 .kpi span{color:var(--soft);font-size:13px;font-weight:700}.kpi b{display:block;font-size:30px;font-variant-numeric:tabular-nums}
@@ -300,6 +306,25 @@ let code = ""; try{ code = localStorage.getItem("aura_coach_code")||""; }catch(e
 let confirmDel = false, view = "clientes", FIN = [], finYear = new Date().getFullYear(), finEdit = null;
 const isDone = c => c.statut === "terminee";
 const dIn = v => { if(!v) return ""; if(/^\d{4}-\d\d-\d\d$/.test(String(v))) return String(v); const d = new Date(v); return isNaN(d) ? "" : iso(d); };
+const minsSince = d => d ? (Date.now()-new Date(d))/60000 : 1e9;
+const hm = t => new Date(t).toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"}).replace(":","h");
+const dayLbl = t => { const d=new Date(t), a=new Date(); a.setHours(0,0,0,0); const k=Math.round((a-new Date(d.getFullYear(),d.getMonth(),d.getDate()))/864e5);
+  return k===0?"aujourd'hui":k===1?"hier":k<7?"le "+d.toLocaleDateString("fr-FR",{weekday:"long"}):"le "+fr(d,{day:"numeric",month:"short"}); };
+const online = c => minsSince(c.derniere_activite) < 4;
+const seen = c => { const m=minsSince(c.derniere_activite); if(!c.derniere_activite) return "jamais connectée";
+  if(m<4) return '<b style="color:var(--good);font-size:inherit">● en ligne</b>'; if(m<60) return "vue il y a "+Math.round(m)+" min";
+  return "vue "+dayLbl(c.derniere_activite)+" à "+hm(c.derniere_activite); };
+const dur = ms => { const m=Math.max(1,Math.round(ms/60000)); return m<60? m+" min" : Math.floor(m/60)+" h"+(m%60?String(m%60).padStart(2,"0"):""); };
+function connexions(c){
+  const S=(D(c).sessions||[]).filter(x=>x&&x.s).slice().sort((a,b)=>b.s-a.s);
+  const days=[...Array(7)].map((_,i)=>{ const d=new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()-6+i); const e=+d+864e5;
+    const L=S.filter(x=>x.s>=+d&&x.s<e); return {d, n:L.length, t:L.reduce((a,x)=>a+Math.max(60000,x.e-x.s),0)}; });
+  const wk=days.filter(x=>x.n).length, tt=days.reduce((a,x)=>a+x.t,0);
+  return `<div class="card" style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><b>Ses connexions</b><span class="flag ${online(c)?"ok":minsSince(c.derniere_activite)>4*1440?"warn":""}" style="font-size:12.5px">${online(c)?"● En ligne maintenant":"Dernière fois : "+(c.derniere_activite?dayLbl(c.derniere_activite)+" à "+hm(c.derniere_activite):"jamais")}</span></div>
+    <div class="cx7">${days.map(x=>`<div class="cxd ${x.n?"on":""}"><i>${x.n?"✓":""}</i><span>${x.d.toLocaleDateString("fr-FR",{weekday:"short"}).replace(".","")}</span></div>`).join("")}</div>
+    <p class="muted" style="font-size:13.5px">${wk} jour${wk>1?"s":""} sur 7 · ${tt?dur(tt)+" dans l'appli":"pas encore de temps enregistré"} cette semaine</p>
+    ${S.length?`<div class="cxl">${S.slice(0,12).map(x=>`<div><span>${dayLbl(x.s).replace(/^le /,"").replace(/^./,m=>m.toUpperCase())}</span><b>${hm(x.s)} → ${hm(x.e)}</b><em>${dur(Math.max(60000,x.e-x.s))}</em></div>`).join("")}</div>`:'<p class="muted" style="font-size:13px">Ses prochaines ouvertures de l\'appli s\'afficheront ici.</p>'}</div>`;
+}
 const MOIS = ["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
 let CL = [], sel = null, filt = "all", demo = !API;
 let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.hidden=false; clearTimeout(tt); tt=setTimeout(()=>t.hidden=true,2600); }
@@ -388,7 +413,7 @@ function render(){
    <div class="layout ${c?"has-sel":""}">
      <div class="list">
        <div class="chips">${[["all","En cours"],["relance","À relancer"],["scripts","Scripts à corriger"],["fini","Terminées"+(CL.filter(isDone).length?" ("+CL.filter(isDone).length+")":"")]].map(([k,l])=>`<button class="chip ${filt===k?"sel":""}" data-act="filt" data-v="${k}">${l}</button>`).join("")}</div>
-       ${list.map(x=>`<button class="cl ${x.id===sel?"sel":""}" data-act="open" data-v="${x.id}"><span class="av">${avH(x)}</span><span class="tx"><b>${esc(x.prenom)}</b><span class="sub">Semaine ${esc(x.semaine)}/13 · ${esc(x.exercices)} exercices · vue ${daysSince(x.derniere_activite)===0?"aujourd'hui":"il y a "+daysSince(x.derniere_activite)+" j"}</span><span class="flags">${flags(x)}</span></span><span class="ring" style="--p:${parseInt(x.aura)||0}"><span>${parseInt(x.aura)||0}%</span></span></button>`).join("")||`<p class="muted" style="padding:20px">Aucune cliente ici.</p>`}
+       ${list.map(x=>`<button class="cl ${x.id===sel?"sel":""}" data-act="open" data-v="${x.id}"><span class="avw"><span class="av">${avH(x)}</span>${online(x)?'<i class="live"></i>':""}</span><span class="tx"><b>${esc(x.prenom)}</b><span class="sub">Semaine ${esc(x.semaine)}/13 · ${esc(x.exercices)} exercices · ${seen(x)}</span><span class="flags">${flags(x)}</span></span><span class="ring" style="--p:${parseInt(x.aura)||0}"><span>${parseInt(x.aura)||0}%</span></span></button>`).join("")||`<p class="muted" style="padding:20px">Aucune cliente ici.</p>`}
      </div>
      <div class="detail">${c?detail(c):`<div class="card"><p class="muted">Choisis une cliente pour voir tout son suivi.</p></div>`}</div>
    </div>`}`;
@@ -400,9 +425,10 @@ function detail(c){
   const scripts = d.scripts||[], ms = msgs(c), a1 = (d.ans||{}).a1||{}, a3c = (d.chk||{}).a3||{};
   return `
   <button class="btn sm backbtn" data-act="close">‹ Toutes mes clientes</button>
-  <div class="card"><div class="head"><span class="av">${avH(c)}</span><div style="flex:1;min-width:0"><h2>${esc(c.prenom)}</h2><p class="muted">${esc(c.metier)}${c.insta?` · <a href="https://instagram.com/${esc(String(c.insta).replace("@",""))}" target="_blank" rel="noopener" style="color:var(--red)">@${esc(c.insta)}</a>`:""} · code ${esc(c.id)}</p><p class="muted">Début le ${(dIn(c.debut_coach)||dIn(c.debut))?fr((dIn(c.debut_coach)||dIn(c.debut))+"T12:00",{day:"numeric",month:"long"}):"?"} · dernière activité ${fr(c.derniere_activite,{day:"numeric",month:"long"})} à ${new Date(c.derniere_activite).toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}</p></div><span class="ring" style="--p:${parseInt(c.aura)||0};width:64px;height:64px"><span>${esc(c.aura)}</span></span></div>
+  <div class="card"><div class="head"><span class="av">${avH(c)}</span><div style="flex:1;min-width:0"><h2>${esc(c.prenom)}</h2><p class="muted">${esc(c.metier)}${c.insta?` · <a href="https://instagram.com/${esc(String(c.insta).replace("@",""))}" target="_blank" rel="noopener" style="color:var(--red)">@${esc(c.insta)}</a>`:""} · code ${esc(c.id)}</p><p class="muted">Début le ${(dIn(c.debut_coach)||dIn(c.debut))?fr((dIn(c.debut_coach)||dIn(c.debut))+"T12:00",{day:"numeric",month:"long"}):"?"} · ${seen(c)}</p></div><span class="ring" style="--p:${parseInt(c.aura)||0};width:64px;height:64px"><span>${esc(c.aura)}</span></span></div>
     <div class="stats"><div><span>Semaine</span><b>${esc(c.semaine)}/13</b></div><div><span>Exercices</span><b>${esc(c.exercices)}</b></div><div><span>Contenus cette semaine</span><b>${esc(c.posts_semaine)}</b></div><div><span>Abonnés</span><b>${l?esc(l.ab):"–"}${f&&l&&st.length>1&&!isNaN(parseInt(l.ab))?` <small style="font-size:13px;color:var(--good)">${(parseInt(String(l.ab).replace(/\s/g,""))-parseInt(String(f.ab).replace(/\s/g,"")))>=0?"+":""}${parseInt(String(l.ab).replace(/\s/g,""))-parseInt(String(f.ab).replace(/\s/g,""))}</small>`:""}</b></div></div></div>
 
+  ${connexions(c)}
   <div class="card" style="display:flex;flex-direction:column;gap:10px"><b>Son accompagnement ${isDone(c)?'<span class="flag ok">✓ Terminé</span>':""}</b>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label for="st-date" class="muted" style="font-size:14px">Date de début</label><input class="rin" type="date" id="st-date" value="${esc(dIn(c.debut_coach)||dIn(c.debut))}" style="width:auto"><button class="btn sm red" data-act="startSave">Enregistrer la date</button></div>
     <p class="muted" style="font-size:13px">C'est cette date qui débloque ses applis du mois 2 et du mois 3. Elle se met à jour dans son appli à sa prochaine ouverture.</p>
@@ -523,6 +549,10 @@ document.addEventListener("click", async e=>{
   }
 });
 load();
+
+/* Rafraîchit la liste toute seule toutes les 90 s (sans gêner si tu es en train d'écrire) */
+setInterval(async()=>{ if(demo||!code||document.visibilityState!=="visible") return; const a=document.activeElement; if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)) return;
+  try{ const r=await post({action:"list"}); if(r.ok){ CL=r.clientes.sort((a,b)=>new Date(b.derniere_activite)-new Date(a.derniere_activite)); const y=window.scrollY; render(); window.scrollTo(0,y); } }catch(_){} }, 90000);
 
 </script>
 
