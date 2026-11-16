@@ -37,7 +37,7 @@ h3{font-family:var(--f-serif);font-weight:400;font-size:24px;margin:0}
 .btn.sm{padding:7px 12px;font-size:13.5px}
 .demo{background:#fdf5d9;border:1.5px solid #f4e3a3;border-radius:16px;padding:12px 16px;margin-bottom:16px;font-weight:600}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
-.tabs{display:flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px;margin:0 0 16px;width:max-content;max-width:100%}
+.tabs{display:flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px;margin:0 0 16px;width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{flex:none}
 .tab{border-radius:99px;padding:9px 16px;font-weight:800;font-size:14px;color:var(--soft);white-space:nowrap}.tab.sel{background:var(--red);color:#fff}
 .bars{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;align-items:end;height:190px;margin-top:14px}
 .bar{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;min-width:0}
@@ -55,6 +55,51 @@ h3{font-family:var(--f-serif);font-weight:400;font-size:24px;margin:0}
 .cxl{display:flex;flex-direction:column}.cxl div{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-top:1px solid var(--line);font-size:14px}.cxl div:first-child{border-top:0}
 .cxl span{flex:1;color:var(--soft);font-weight:700}.cxl b{font-variant-numeric:tabular-nums}.cxl em{font-style:normal;color:var(--soft);font-size:13px;min-width:52px;text-align:right}
 .avw{position:relative;flex:none;display:flex}.live{position:absolute;right:-1px;bottom:-1px;width:13px;height:13px;border-radius:50%;background:#2fbf63;border:2.5px solid #fff}
+
+/* ---- Mon organisation ---- */
+.otabs{display:flex;gap:6px;overflow-x:auto;margin:0 0 14px;padding-bottom:2px;scrollbar-width:none}.otabs::-webkit-scrollbar{display:none}
+.otabs button{flex:none;border-radius:99px;padding:8px 14px;font-weight:800;font-size:13.5px;background:#fff;border:1.5px solid var(--line);color:var(--soft)}.otabs button.on{background:var(--ink);color:#fff;border-color:transparent}
+.ostrip{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:12px}
+.ostrip button{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:7px 2px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;position:relative}
+.ostrip small{font-size:11.5px;font-weight:800;color:var(--soft)}.ostrip b{font-size:18px;line-height:1.2}
+.ostrip i{width:70%;height:4px;border-radius:99px;background:linear-gradient(90deg,#e0b33a calc(var(--p)*1%),#f1e6e4 0)}
+.ostrip button.on{border-color:var(--red);box-shadow:0 0 0 2px var(--red) inset}.ostrip button.today small{color:var(--red)}
+.oweek{background:var(--butter);border-radius:14px;padding:10px 14px;margin-bottom:12px;font-size:14px}
+.oday{display:flex;flex-direction:column;gap:12px;max-width:760px}
+.ohead{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}.ohead h2{font-size:34px}
+.opct{display:flex;flex-direction:column;align-items:flex-end}.opct b{font-size:24px;color:#b8892a}.opct small{color:var(--soft);font-weight:700}
+.oquote{font-family:var(--f-serif);font-style:italic;font-size:18px;line-height:1.3;color:var(--red);margin:0;border-left:3px solid var(--red);padding:2px 0 2px 12px}
+.obanner{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px}.obanner.gold{background:var(--butter);border-color:#f1dfa0}
+.ocard{background:#fffdfb;border:1px solid #f3e6e1;border-radius:24px;padding:15px 17px;display:flex;flex-direction:column;gap:6px;box-shadow:0 6px 18px -12px rgba(122,21,48,.22)}
+.oshell{max-width:760px;margin:0 auto}.otop{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-bottom:14px}.otop h1{font-size:40px}.otopb{display:flex;gap:6px;flex:none}.otopb .btn{white-space:nowrap}.otopb a{text-decoration:none;color:inherit}
+.oview{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:99px;padding:3px;margin-bottom:10px}.oview button{border-radius:99px;padding:6px 14px;font-size:13px;font-weight:800;color:var(--soft)}.oview button.on{background:#fdf3d3;color:var(--ink)}
+.oweekall{display:flex;flex-direction:column;gap:12px;max-width:760px}.otoday{border-color:#e0b33a;box-shadow:0 0 0 2px #f3dc95}
+.owhead{display:flex;justify-content:space-between;align-items:center;text-align:left;width:100%;padding-bottom:4px}.owhead small{color:var(--soft);font-weight:700}.owhead em{font-style:normal;font-weight:800;color:#b8892a;font-size:13px}
+.omuted{color:var(--soft);font-size:13.5px}
+.ocard.sun{background:#fffaf0}
+.otitle{font-weight:800;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:2px;flex-wrap:wrap}
+.ofield{display:flex;flex-direction:column;gap:4px;font-size:12.5px;font-weight:800;color:var(--soft)}.ofield .rin{font-weight:600;color:var(--ink)}
+.ocount>div{display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.odots{display:flex;gap:8px}.odots button{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);background:#fff}.odots button.f{background:var(--red);border-color:var(--red)}
+.otask{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #f6eeee}.otask:first-of-type{border-top:0}
+.ock{width:27px;height:27px;flex:none;border-radius:50%;border:2px solid #d9cccc;background:#fff;color:#fff;font-weight:900;font-size:14px;display:grid;place-items:center;transition:transform .15s}.ock.on{background:#e0b33a;border-color:#e0b33a}.ock:active{transform:scale(.88)}
+.ot{flex:1;min-width:0;line-height:1.35}.ot em{font-style:normal;font-weight:800;color:var(--red);margin-right:6px;font-size:13px}
+.otask.done .ot{text-decoration:line-through;text-decoration-color:#e0b33a;color:#a8959a}.otask.star{background:#fff8e6;border-radius:10px;padding-inline:6px}
+.otask.r .ot{font-size:14px}
+.ostar{font-size:19px;color:#d8c4c4;width:28px}.ostar.on{color:#e0a92b}
+.omini{width:28px;height:28px;border-radius:50%;color:var(--soft);font-weight:800;font-size:15px;flex:none}.omini:hover{background:#faf3f1}
+.otag{font-size:10.5px;font-weight:800;padding:3px 7px;border-radius:99px;background:#f4eef9;color:#6a4fa3;flex:none}.otag.biz{background:#f7e4e7;color:var(--red)}
+.oadd{display:flex;gap:6px;margin-top:6px}.oadd .rin:first-child{flex:1;min-width:0}
+.osel{border:1.5px solid var(--line);border-radius:99px;padding:5px 8px;background:#fff;font:inherit;font-size:12.5px;font-weight:700;color:var(--red);flex:none}
+.ogrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.obig{font-family:var(--f-serif);font-size:46px;line-height:1;color:var(--good)}
+.ogauge{position:relative;height:14px;border-radius:99px;background:#f4ece9;margin-top:8px}.ogauge i{position:absolute;inset:0 auto 0 0;border-radius:99px;background:linear-gradient(90deg,#c2456a,var(--red))}.ogauge s{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.3}
+.ogl{position:relative;height:16px;font-size:11px;font-weight:800;color:var(--soft)}.ogl span{position:absolute;transform:translateX(-50%)}.ogl span:first-child,.ogl span:last-child{transform:none}
+.ostars{display:flex;gap:6px;font-size:28px;color:#eadcd8}.ostars i{font-style:normal}.ostars .f{color:#e0a92b}.ostars .amb{opacity:.55}
+.osub{font-weight:800;font-size:13.5px;margin-top:10px;color:var(--red)}
+.ostats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.ostats div{background:#faf3f1;border-radius:12px;padding:9px 10px;display:flex;flex-direction:column}.ostats span{font-size:11.5px;font-weight:700;color:var(--soft);min-height:28px;line-height:1.2}.ostats b{font-size:21px}.ostats small{font-size:12px;color:var(--soft)}
+.oweekbars{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;height:110px;margin-top:10px}.oweekbars div{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px}.oweekbars i{width:100%;max-width:34px;background:var(--good);border-radius:6px 6px 2px 2px;opacity:.85}.oweekbars small{font-size:11px;font-weight:700;color:var(--soft)}
+.pill{font-size:11px;font-weight:800;background:#f7e4e7;color:var(--red);padding:4px 9px;border-radius:99px}
 .frow .flag{border:0;cursor:pointer;font-size:12px;padding:5px 9px}
 .kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;min-width:0}
 .kpi span{color:var(--soft);font-size:13px;font-weight:700}.kpi b{display:block;font-size:30px;font-variant-numeric:tabular-nums}
@@ -113,6 +158,7 @@ td,th{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
 .backbtn{display:none}
 @media (max-width:860px){
   .layout{grid-template-columns:1fr}.list{position:static;max-height:none}
+  .ogrid{grid-template-columns:1fr}.ohead h2{font-size:28px}.ostats{grid-template-columns:1fr 1fr}.ostrip{gap:4px}.ostrip b{font-size:16px}
   .kpis{grid-template-columns:1fr 1fr}.kpi b{font-size:23px}.fgrid{grid-template-columns:1fr 1fr}.frow{flex-wrap:wrap}.fn{flex-basis:calc(100% - 70px)}.bars{gap:3px}.bar small{font-size:9px}.bar span{font-size:9px}.stats{grid-template-columns:1fr 1fr}
   .layout.has-sel .list{display:none}.layout:not(.has-sel) .detail{display:none}.backbtn{display:inline-flex}
 }
@@ -303,7 +349,7 @@ const fr = (d,o) => new Date(d).toLocaleDateString("fr-FR", o);
 const daysSince = d => d ? Math.floor((Date.now()-new Date(d))/864e5) : 999;
 const photo = id => id ? `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w800` : "";
 let code = ""; try{ code = localStorage.getItem("aura_coach_code")||""; }catch(e){}
-let confirmDel = false, view = "clientes", FIN = [], finYear = new Date().getFullYear(), finEdit = null;
+let confirmDel = false, view = (()=>{ try{ return localStorage.getItem("aura_coach_view")||"orga"; }catch(e){ return "orga"; } })(), FIN = [], finYear = new Date().getFullYear(), finEdit = null;
 const isDone = c => c.statut === "terminee";
 const dIn = v => { if(!v) return ""; if(/^\d{4}-\d\d-\d\d$/.test(String(v))) return String(v); const d = new Date(v); return isNaN(d) ? "" : iso(d); };
 const minsSince = d => d ? (Date.now()-new Date(d))/60000 : 1e9;
@@ -343,12 +389,15 @@ function demoData(){
 async function load(){
   if(demo){ CL = demoData(); const y=new Date().getFullYear(); FIN=[{id:"f1",date:y+"-01-12",cliente:"Exemple · Lina",offre:"Aura Magnétique",montant:1500,statut:"paye",note:""},{id:"f2",date:iso(new Date()),cliente:"Exemple · Julie",offre:"Aura Magnétique",montant:500,statut:"paye",note:"Paiement 1/3"},{id:"f3",date:iso(new Date(Date.now()+30*864e5)),cliente:"Exemple · Julie",offre:"Aura Magnétique",montant:500,statut:"a_venir",note:"Paiement 2/3"}]; GRES=[{id:"g1",titre:"Exemple · Tuto Calendly",lien:"https://calendly.com",desc:"Vidéo de 5 min"}]; render(); return; }
   if(!code){ renderLogin(); return; }
+  if(window.ORGA_ONLY){ if(!O.updatedAt) $("#app").innerHTML = `<p class="muted" style="padding:40px;text-align:center">J'ouvre ta journée…</p>`; else render();
+    try{ const f = await post({action:"finList"}); if(!f.ok && f.error==="code"){ code=""; try{localStorage.removeItem("aura_coach_code");}catch(e){} renderLogin("Ce code n'est pas le bon."); return; } FIN = f.items||[]; }catch(e){}
+    render(); oPull(); return; }
   $("#app").innerHTML = `<p class="muted" style="padding:40px;text-align:center">Je récupère tes clientes…</p>`;
   try{ const r = await post({action:"list"}); if(!r.ok){ if(r.error==="code"){ code=""; try{localStorage.removeItem("aura_coach_code");}catch(e){} renderLogin("Ce code n'est pas le bon."); return; } throw 0; }
     CL = r.clientes.sort((a,b)=>new Date(b.derniere_activite)-new Date(a.derniere_activite));
     try{ const g = await post({action:"resList"}); GRES = g.resources||[]; }catch(_){}
     try{ const f = await post({action:"finList"}); FIN = f.items||[]; }catch(_){}
-    render(); }
+    render(); oPull(); }
   catch(e){ $("#app").innerHTML = `<div class="login"><h2>Pas de connexion</h2><p class="muted">Je n'arrive pas à joindre ton Google Sheet. Vérifie ta connexion, puis réessaie.</p><button class="btn red" data-act="reload">Réessayer</button></div>`; }
 }
 function renderLogin(err){
@@ -398,18 +447,19 @@ function biz(){
      ${rows.map(x=>`<div class="frow"><span class="fd">${fr(dIn(x.date)+"T12:00",{day:"numeric",month:"short"})}</span><span class="fn"><b>${esc(x.cliente)}</b><span class="muted">${esc(x.offre)}${x.note?" · "+esc(x.note):""}</span></span><b class="fm">${eur(x.montant)}</b><button class="flag ${x.statut==="a_venir"?"warn":"ok"}" data-act="finToggle" data-v="${esc(x.id)}">${x.statut==="a_venir"?"⏳ À venir":"✅ Encaissé"}</button><button class="btn sm" data-act="finEdit" data-v="${esc(x.id)}" aria-label="Modifier">✎</button><button class="btn sm" data-act="finDel" data-v="${esc(x.id)}" aria-label="Supprimer">🗑</button></div>`).join("")||'<p class="muted">Aucun paiement pour cette année. Ajoute ton premier juste au-dessus 💛</p>'}</div>`;
 }
 function render(){
+  if(window.ORGA_ONLY){ $("#app").innerHTML = orgaShell(); return; }
   const ON = CL.filter(c=>!isDone(c));
   const act = ON.filter(c=>daysSince(c.derniere_activite)<4).length, rel = ON.filter(c=>daysSince(c.derniere_activite)>=4).length, sc = ON.reduce((a,c)=>a+(+c.scripts_a_corriger||0),0);
   const list = filt==="fini" ? CL.filter(isDone) : ON.filter(c=> filt==="all" || (filt==="relance" && daysSince(c.derniere_activite)>=4) || (filt==="scripts" && +c.scripts_a_corriger>0));
   const c = CL.find(x=>x.id===sel);
   $("#app").innerHTML = `
    ${demo?`<div class="demo">👀 Mode démo : ces 3 clientes sont des exemples. Dès que ton Google Sheet est branché, tu verras tes vraies clientes ici.</div>`:""}
-   <div class="top"><div><span class="hand">bonjour ${COACH}</span><h1>${view==="biz"?"Mon <em>business</em>":"Mes <em>clientes</em>"}</h1></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="resPanel">📚 Ressources pour toutes</button>${demo?"":`<button class="btn sm" data-act="reload">↻ Actualiser</button><button class="btn sm" data-act="logout">Se déconnecter</button>`}</div></div>
+   <div class="top"><div><span class="hand">bonjour ${COACH}</span><h1>${view==="orga"?"Mon <em>orga</em>":view==="biz"?"Mon <em>business</em>":"Mes <em>clientes</em>"}</h1></div><div style="display:flex;gap:8px;flex-wrap:wrap">${view==="orga"?(demo?"":`<button class="btn sm" data-act="reload" aria-label="Actualiser">↻</button>`):`<button class="btn sm" data-act="resPanel">📚 Ressources pour toutes</button>${demo?"":`<button class="btn sm" data-act="reload">↻ Actualiser</button><button class="btn sm" data-act="logout">Se déconnecter</button>`}`}</div></div>
    ${showRes?`<div class="card" style="margin-bottom:16px;display:flex;flex-direction:column;gap:10px"><h3>Ressources pour toutes tes clientes</h3><p class="muted">Elles les retrouvent dans « Ressources » de leur appli.</p>
      ${GRES.map(r=>`<div style="display:flex;gap:10px;align-items:center"><span style="flex:1;min-width:0"><b>${esc(r.titre)}</b> <span class="muted">${esc(r.desc||"")}</span><br><a href="${esc(r.lien)}" target="_blank" rel="noopener" style="color:var(--red);font-size:13px;word-break:break-all">${esc(r.lien)}</a></span><button class="btn sm" data-act="resDel" data-v="${esc(r.id)}">Retirer</button></div>`).join("")||'<p class="muted">Aucune ressource pour l\'instant.</p>'}
      ${resForm("g")}</div>`:""}
-   <div class="tabs"><button class="tab ${view==="clientes"?"sel":""}" data-act="view" data-v="clientes">👩🏻‍💻 Mes clientes</button><button class="tab ${view==="biz"?"sel":""}" data-act="view" data-v="biz">💰 Mon chiffre d'affaires</button></div>
-   ${view==="biz"?biz():`<div class="kpis"><div class="kpi"><span>Clientes en cours</span><b>${ON.length}</b></div><div class="kpi"><span>Actives cette semaine</span><b style="color:var(--good)">${act}</b></div><div class="kpi"><span>À relancer</span><b style="color:var(--warn)">${rel}</b></div><div class="kpi"><span>Scripts à corriger</span><b style="color:var(--red)">${sc}</b></div></div>
+   <div class="tabs"><button class="tab ${view==="orga"?"sel":""}" data-act="view" data-v="orga">🗓️ Mon organisation</button><button class="tab ${view==="clientes"?"sel":""}" data-act="view" data-v="clientes">👩🏻‍💻 Mes clientes</button><button class="tab ${view==="biz"?"sel":""}" data-act="view" data-v="biz">💰 Mon chiffre d'affaires</button></div>
+   ${view==="orga"?orga():view==="biz"?biz():`<div class="kpis"><div class="kpi"><span>Clientes en cours</span><b>${ON.length}</b></div><div class="kpi"><span>Actives cette semaine</span><b style="color:var(--good)">${act}</b></div><div class="kpi"><span>À relancer</span><b style="color:var(--warn)">${rel}</b></div><div class="kpi"><span>Scripts à corriger</span><b style="color:var(--red)">${sc}</b></div></div>
    <div class="layout ${c?"has-sel":""}">
      <div class="list">
        <div class="chips">${[["all","En cours"],["relance","À relancer"],["scripts","Scripts à corriger"],["fini","Terminées"+(CL.filter(isDone).length?" ("+CL.filter(isDone).length+")":"")]].map(([k,l])=>`<button class="chip ${filt===k?"sel":""}" data-act="filt" data-v="${k}">${l}</button>`).join("")}</div>
@@ -499,7 +549,7 @@ document.addEventListener("click", async e=>{
   if(a==="delNo"){ confirmDel=false; render(); }
   if(a==="delYes"){ const id=sel; confirmDel=false; if(demo){ CL=CL.filter(x=>x.id!==id); sel=null; render(); toast("Supprimée (démo) ✓"); return; }
     try{ const r=await post({action:"delete", id}); if(r.ok){ CL=CL.filter(x=>x.id!==id); sel=null; render(); toast("Cliente supprimée ✓"); } else toast("Ça n'a pas marché, réessaie"); }catch(_){ toast("Pas de connexion"); } }
-  if(a==="view"){ view=b.dataset.v; sel=null; finEdit=null; render(); window.scrollTo(0,0); }
+  if(a==="view"){ view=b.dataset.v; try{ localStorage.setItem("aura_coach_view",view); }catch(_){} sel=null; finEdit=null; render(); window.scrollTo(0,0); }
   if(a==="startSave"){ const c=CL.find(x=>x.id===sel), v=$("#st-date").value; if(!v){ toast("Choisis une date"); return; }
     if(demo){ c.debut_coach=v; render(); toast("Date enregistrée (démo) ✓"); return; }
     try{ const r=await post({action:"setStart", id:sel, value:v}); if(r.ok){ c.debut_coach=v; render(); toast("Date enregistrée ✓"); } else toast("Ça n'a pas marché, réessaie"); }catch(_){ toast("Pas de connexion"); } }
@@ -548,11 +598,256 @@ document.addEventListener("click", async e=>{
     catch(_){ toast("Pas de connexion, réessaie"); b.disabled=false; }
   }
 });
-load();
+setTimeout(load, 0);
 
 /* Rafraîchit la liste toute seule toutes les 90 s (sans gêner si tu es en train d'écrire) */
-setInterval(async()=>{ if(demo||!code||document.visibilityState!=="visible") return; const a=document.activeElement; if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)) return;
+setInterval(async()=>{ if(window.ORGA_ONLY||demo||!code||document.visibilityState!=="visible") return; const a=document.activeElement; if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)) return;
   try{ const r=await post({action:"list"}); if(r.ok){ CL=r.clientes.sort((a,b)=>new Date(b.derniere_activite)-new Date(a.derniere_activite)); const y=window.scrollY; render(); window.scrollTo(0,y); } }catch(_){} }, 90000);
+
+/* ================= MON ORGANISATION =================
+   Le planning de la semaine de Cédryna, jour par jour, repris de sa note :
+   routines qui reviennent toutes seules selon le jour, objectif + contenu du jour,
+   tâches en attente, objectifs du mois, checklist de fin de mois, bilan du dimanche.
+   Sauvegardé sur le téléphone ET dans le Google Sheet (onglet « Mon organisation »). */
+
+const OKEY = "aura_orga_v1";
+const JOURS = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+const J3 = ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"];
+const r_ = (id,t,tag) => ({id,t,tag:tag||""});
+const ORGA_DEFAULT = () => ({
+  v:1, updatedAt:0,
+  emoji:{1:"🎧",2:"🥞",3:"🌷",4:"💄",5:"🙌",6:"💙",0:"🧺"},
+  contenu:{1:"Appel autorité / Preuve client",2:"Storytelling + Appel autorité",3:"Preuve client / Storytelling",4:"Appel autorité / Mindset",5:"Preuve client / Storytelling",6:"Storytelling / Lifestyle",0:""},
+  routines:{
+    1:[r_("gm","Gratitude matin + manifestation","moi"),r_("prep","Préparation + déj (1h30)","moi"),r_("story","Story (30 min)","biz"),r_("pause","Pause manger (12h–13h30)","moi"),r_("sd","Préparer la story de demain · valeur","biz"),r_("gs","Gratitude soir + journal intime","moi")],
+    2:[r_("prep","Déjeuner + préparation (1h30)","moi"),r_("story","Story (30 min)","biz"),r_("gm","Gratitude matin","moi"),r_("pause","Pause manger (12h–13h30)","moi"),r_("sd","Préparer la story de demain · témoignage client sans CTA","biz"),r_("sport","Sport 30 min","moi"),r_("gs","Gratitude soir + journal intime","moi")],
+    3:[r_("prep","Se préparer + déj (1h30)","moi"),r_("story","Story (30 min)","biz"),r_("gm","Gratitude matin","moi"),r_("pause","Pause manger (12h–13h30)","moi"),r_("sd","Préparer la story de demain · casser une croyance de ma cible","biz"),r_("gs","Gratitude soir + journal intime","moi")],
+    4:[r_("prep","Se préparer + déj (1h30)","moi"),r_("story","Story (30 min)","biz"),r_("gm","Gratitude matin + manifestation","moi"),r_("pause","Pause manger (12h–13h30)","moi"),r_("sd","Préparer la story de demain · témoignage client avant/après hyper approfondi","biz"),r_("gs","Gratitude soir + journal intime","moi")],
+    5:[r_("prep","Se préparer + déj (1h30)","moi"),r_("story","Story (30 min)","biz"),r_("gm","Gratitude matin","moi"),r_("fact","Factures","biz"),r_("pause","Pause manger (12h)","moi"),r_("sd","Préparer la story de demain · lifestyle","biz"),r_("sport","Sport 30 min","moi"),r_("gs","Gratitude soir + journal intime","moi")],
+    6:[r_("prep","Se préparer + déj (45 min)","moi"),r_("story","Story (30 min) · lifestyle (vlog)","biz"),r_("gm","Gratitude matin + manifestation","moi"),r_("pause","Pause manger","moi"),r_("gs","Gratitude soir + journal intime","moi")],
+    0:[r_("gm","Gratitude du matin","moi"),r_("agenda","Remplir l'agenda + refaire le planning","biz"),r_("objs","Fixer l'objectif de la semaine","biz"),r_("cartes","Tirage de cartes","moi"),r_("sd","Préparer la story de demain · connexion","biz"),r_("gs","Gratitude du soir","moi")]
+  },
+  counters:true,           // compteurs setting + Reels du lundi au vendredi
+  days:{},                 // "2026-11-16": {obj, contenu, tasks:[{id,t,done,star,time}], rd:{routineId:true}, set:0, reels:0}
+  weeks:{},                // "2026-11-16" (lundi): {obj, bilan:{marche, victoire, ajuster}}
+  backlog:[
+    {id:"b1",t:"Refaire le questionnaire ?",cat:"business"},{id:"b2",t:"Refaire l'exercice d'Emma dans l'app",cat:"business"},
+    {id:"b3",t:"Organiser Claude et ChatGPT",cat:"business"},{id:"b4",t:"Compta",cat:"business"},
+    {id:"b5",t:"Construire le planning YouTube et le partager à Catherine",cat:"business"},{id:"b6",t:"Réserver mon coaching individuel de la semaine avec Catherine",cat:"business"},
+    {id:"p1",t:"Acheter un trépied",cat:"perso"},{id:"p2",t:"Réviser le code",cat:"perso"},{id:"p3",t:"Passer le code",cat:"perso"},
+    {id:"p4",t:"Permis",cat:"perso"},{id:"p5",t:"Idée : un Reel CapCut pour résumer 2026",cat:"perso"}
+  ],
+  months:{"2026-11":{goals:[
+    {id:"m1",t:"Signer 3 à 4 nouvelles clientes pour AURA MAGNÉTIQUE"},
+    {id:"m2",t:"Atteindre 3 000 à 4 000 € de chiffre d'affaires (5 000 € en objectif ambitieux)"},
+    {id:"m3",t:"Développer YouTube en publiant régulièrement des vidéos et des vlogs pour renforcer la confiance"},
+    {id:"m4",t:"Développer ma visibilité et ma différenciation sur Instagram grâce à un contenu plus personnel, authentique et stratégique"},
+    {id:"m5",t:"Améliorer mon acquisition et ma conversion grâce au setting quotidien, aux témoignages clients et au suivi des prospects"}],
+    done:{}, admin:{}}}
+});
+const ADMIN = [
+  ["💰 Vérifier mon chiffre d'affaires",["Vérifier les paiements reçus sur Stripe et PayPal","Vérifier les ventes et les paiements en plusieurs fois","Comparer les montants encaissés avec « Mon chiffre d'affaires »","Mettre à jour mon livre des recettes"]],
+  ["🧾 Vérifier mes factures",["Vérifier les factures générées par Stripe","Vérifier que les paiements correspondent aux documents disponibles","Noter les factures manquantes ou les anomalies à régulariser","Ne pas supprimer ni renuméroter les factures déjà émises"]],
+  ["📁 Ranger mes documents",["Enregistrer les factures et justificatifs du mois dans mes dossiers","Vérifier que mes documents importants sont bien conservés","Noter les démarches administratives à terminer le mois suivant"]],
+  ["📊 Faire mon petit bilan",["Noter mon chiffre d'affaires total du mois","Noter le nombre de clientes et de ventes réalisées","Vérifier mes dépenses professionnelles et conserver les justificatifs","Reporter les tâches administratives restantes au mois suivant"]]
+];
+const RAPPELS = ["Répète ce qui marche : tu n'as pas besoin de réinventer ton contenu tous les jours.","Ta personnalité est un avantage stratégique. Ne la cache pas derrière une posture trop sérieuse.","Le contenu doit servir un objectif commercial, pas devenir une fin en soi.","Instagram attire, YouTube approfondit, les conversations qualifient, l'appel permet de décider.","Une petite victoire bien racontée vaut mieux qu'un gros chiffre vide.","Sois drôle dans tes stories. Les gens achètent à quelqu'un qu'ils aiment bien.","Pas besoin d'être virale pour vendre."];
+
+let O = (()=>{ try{ const s=JSON.parse(localStorage.getItem(OKEY)||"null"); if(s&&s.v) return Object.assign(ORGA_DEFAULT(), s); }catch(e){} return ORGA_DEFAULT(); })();
+let oTab = "jour", oDay = iso(new Date()), oEditR = false, oWeekView = false, oSyncT = null, oDirty = false;
+const oid = () => Math.random().toString(36).slice(2,9);
+const dowOf = k => new Date(k+"T12:00").getDay();
+const mondayKey = k => iso(monday(new Date(k+"T12:00")));
+const monthKey = k => k.slice(0,7);
+function oDayObj(k){ if(!O.days[k]) O.days[k] = {obj:"", contenu:"", tasks:[], rd:{}, set:0, reels:0}; return O.days[k]; }
+function oMonth(m){ if(!O.months[m]) O.months[m] = {goals:[], done:{}, admin:{}}; const M=O.months[m]; M.done=M.done||{}; M.admin=M.admin||{}; M.goals=M.goals||[]; return M; }
+function oWeek(w){ if(!O.weeks[w]) O.weeks[w] = {obj:"", bilan:{}}; return O.weeks[w]; }
+function oSave(silent){
+  O.updatedAt = Date.now(); try{ localStorage.setItem(OKEY, JSON.stringify(O)); }catch(e){}
+  if(demo||!code) return; oDirty = true; clearTimeout(oSyncT);
+  oSyncT = setTimeout(async()=>{ try{ const r = await post({action:"orgaSave", data: JSON.stringify(O)}); if(r.ok) oDirty=false; }catch(e){} }, 1500);
+}
+async function oPull(){
+  if(demo||!code||oDirty) return;
+  try{ const r = await post({action:"orgaGet"}); if(r.ok && r.data){ const s = JSON.parse(r.data); if(s && s.updatedAt > (O.updatedAt||0)){ O = Object.assign(ORGA_DEFAULT(), s); try{ localStorage.setItem(OKEY, JSON.stringify(O)); }catch(e){} if(view==="orga") render(); } }
+    else if(r.ok && !r.data && O.updatedAt) oSave(); }catch(e){}
+}
+const routinesOf = k => O.routines[dowOf(k)] || [];
+function dayStats(k){ const d=O.days[k]||{tasks:[],rd:{}}; const R=routinesOf(k); const tot=R.length+d.tasks.length; const done=R.filter(r=>d.rd&&d.rd[r.id]).length+d.tasks.filter(t=>t.done).length; return {tot,done,pct:tot?Math.round(done/tot*100):0}; }
+const weekDays = k => { const m=monday(new Date(k+"T12:00")); return [...Array(7)].map((_,i)=>{ const d=new Date(m); d.setDate(m.getDate()+i); return iso(d); }); };
+const prettyDay = k => { const d=new Date(k+"T12:00"); return JOURS[d.getDay()]+" "+d.getDate()+" "+MOIS[d.getMonth()]; };
+const caMonth = m => FIN.filter(x=>x.statut!=="a_venir" && String(x.date).slice(0,7)===m).reduce((a,x)=>a+(+x.montant||0),0);
+function newClients(m){ const first={}; FIN.forEach(x=>{ const n=String(x.cliente||"").trim().toLowerCase(); if(!n) return; const d=dIn(x.date); if(!first[n]||d<first[n]) first[n]=d; }); return Object.values(first).filter(d=>d.slice(0,7)===m).length; }
+const oChk = (on, act, v, extra="") => `<button class="ock ${on?"on":""}" data-o="${act}" data-v="${esc(v)}" ${extra} aria-label="${on?"Décocher":"Cocher"}">${on?"✓":""}</button>`;
+const dots = (n, act) => `<span class="odots">${[1,2,3].map(i=>`<button class="${i<=n?"f":""}" data-o="${act}" data-v="${i}" aria-label="${i}"></button>`).join("")}</span>`;
+
+function orgaShell(){
+  const t = new Date(), h = t.getHours();
+  return `<div class="oshell"><div class="otop"><div><span class="hand">${h<12?"bonjour":h<18?"bon après-midi":"bonsoir"} ${COACH}</span><h1>Mon <em>orga</em></h1></div>
+    <div class="otopb"><button class="btn sm" data-act="reload" aria-label="Actualiser">↻</button><a class="btn sm" href="coach.html" onclick="try{localStorage.setItem('aura_coach_view','clientes')}catch(e){}">👩🏻‍💻 Clientes</a></div></div>
+  ${orga()}</div>`;
+}
+function orga(){
+  const today = iso(new Date());
+  const tabs = [["jour","🗓️ Ma semaine"],["attente","🗂️ En attente"],["mois","🎯 Mon mois"],["bilan","📊 Mon bilan"]];
+  return `<div class="otabs">${tabs.map(([k,l])=>`<button class="${oTab===k?"on":""}" data-o="tab" data-v="${k}">${l}</button>`).join("")}</div>
+  ${oTab==="jour"?oJour(today):oTab==="attente"?oAttente():oTab==="mois"?oMois(today):oBilan(today)}`;
+}
+
+function oJour(today){
+  const k = oDay, d = oDayObj(k), dow = dowOf(k), R = routinesOf(k), W = weekDays(k);
+  const y = new Date(k+"T12:00"); y.setDate(y.getDate()-1); const yk = iso(y);
+  const leftY = (O.days[yk]?.tasks||[]).filter(t=>!t.done);
+  const mo = new Date(k+"T12:00"), lastDay = new Date(mo.getFullYear(), mo.getMonth()+1, 0).getDate();
+  const M = oMonth(monthKey(k)), adminLeft = ADMIN.reduce((a,[,L],gi)=>a+L.filter((_,i)=>!M.admin[gi+"-"+i]).length,0);
+  const tasks = d.tasks.slice().sort((a,b)=>(b.star?1:0)-(a.star?1:0) || String(a.time||"99").localeCompare(String(b.time||"99")));
+  const stars = d.tasks.filter(t=>t.star).length;
+  const wk = oWeek(mondayKey(k));
+  if(oWeekView) return oSemaine(k, today);
+  return `
+  <div class="oview"><button class="on">Jour</button><button data-o="wview">Toute la semaine</button></div>
+  <div class="ostrip">${W.map(x=>{ const s=dayStats(x), dw=dowOf(x); return `<button class="${x===k?"on":""} ${x===today?"today":""}" data-o="day" data-v="${x}"><small>${J3[dw]}</small><b>${O.emoji[dw]||""}</b><i style="--p:${s.pct}"></i></button>`; }).join("")}</div>
+  ${wk.obj?`<div class="oweek">🎯 Objectif de la semaine : <b>${esc(wk.obj)}</b></div>`:""}
+  <div class="oday">
+    <div class="ohead"><div><span class="hand">${k===today?"aujourd'hui":k<today?"jour passé":"à venir"}</span><h2>${O.emoji[dow]||""} ${prettyDay(k)}</h2></div><div class="opct"><b>${dayStats(k).pct}%</b><small>${dayStats(k).done}/${dayStats(k).tot}</small></div></div>
+    <p class="oquote">« ${RAPPELS[(new Date(k+"T12:00").getDate())%RAPPELS.length]} »</p>
+    ${leftY.length && k===today?`<div class="obanner">↪ Il te reste <b>${leftY.length} tâche${leftY.length>1?"s":""}</b> d'hier. <button class="btn sm" data-o="carry">Les reporter à aujourd'hui</button></div>`:""}
+    ${new Date(k+"T12:00").getDate()>=lastDay-3 && adminLeft?`<div class="obanner gold">📋 Fin de mois : ta checklist administrative t'attend (${adminLeft} points). <button class="btn sm" data-o="tab" data-v="mois">L'ouvrir</button></div>`:""}
+    <div class="ocard">
+      <label class="ofield"><span>Objectif du jour</span><input class="rin" data-of="obj" value="${esc(d.obj)}" placeholder="Ex. : finir le montage YouTube"></label>
+      <label class="ofield"><span>Contenu du jour</span><input class="rin" data-of="contenu" value="${esc(d.contenu||O.contenu[dow]||"")}" placeholder="Autorité, preuve client, storytelling…"></label>
+    </div>
+    ${O.counters && dow>=1 && dow<=5?`<div class="ocard ocount"><div><span>💬 Sessions de setting</span>${dots(d.set||0,"set")}</div><div><span>🎬 Reels publiés</span>${dots(d.reels||0,"reels")}</div><p class="muted" style="font-size:12.5px">Repère de Catherine : 2 à 3 de chaque par jour, quand c'est tenable.</p></div>`:""}
+    <div class="ocard">
+      <div class="otitle">Mes tâches du jour ${stars?`<span class="muted" style="font-size:12.5px">★ = mes essentiels</span>`:`<span class="muted" style="font-size:12.5px">Touche ☆ pour marquer tes 3 essentiels</span>`}</div>
+      ${tasks.map(t=>`<div class="otask ${t.done?"done":""} ${t.star?"star":""}">${oChk(t.done,"tDone",t.id)}<span class="ot">${t.time?`<em>${esc(t.time)}</em>`:""}${esc(t.t)}</span><button class="ostar ${t.star?"on":""}" data-o="tStar" data-v="${t.id}" aria-label="Essentiel">${t.star?"★":"☆"}</button><button class="omini" data-o="tNext" data-v="${t.id}" aria-label="Reporter à demain" title="Reporter à demain">→</button><button class="omini" data-o="tDel" data-v="${t.id}" aria-label="Supprimer">×</button></div>`).join("")||`<p class="muted">Rien d'ajouté pour l'instant.</p>`}
+      <div class="oadd"><input class="rin" id="o-new" placeholder="Ajouter une tâche…" enterkeyhint="done"><input class="rin" id="o-time" placeholder="11h" style="width:72px" aria-label="Heure (facultatif)"><button class="btn red sm" data-o="tAdd">Ajouter</button></div>
+    </div>
+    <div class="ocard">
+      <div class="otitle">Mes routines du ${JOURS[dow].toLowerCase()} <button class="btn sm" data-o="editR">${oEditR?"Terminé":"✎ Modifier"}</button></div>
+      ${oEditR?`${R.map(r=>`<div class="otask"><span class="ot">${esc(r.t)}</span><button class="omini" data-o="rDel" data-v="${r.id}" aria-label="Retirer">×</button></div>`).join("")}
+        <div class="oadd"><input class="rin" id="o-rnew" placeholder="Nouvelle routine du ${JOURS[dow].toLowerCase()}…"><button class="btn sm red" data-o="rAdd">Ajouter</button></div>
+        <label class="ofield" style="margin-top:6px"><span>Emoji du ${JOURS[dow].toLowerCase()}</span><input class="rin" data-of="emoji" value="${esc(O.emoji[dow]||"")}" style="width:80px"></label>
+        <label class="ofield"><span>Contenu habituel du ${JOURS[dow].toLowerCase()}</span><input class="rin" data-of="contenuDef" value="${esc(O.contenu[dow]||"")}"></label>
+        <p class="muted" style="font-size:12.5px">Ces routines reviennent toutes seules chaque ${JOURS[dow].toLowerCase()}.</p>`
+      : R.map(r=>`<div class="otask r ${d.rd[r.id]?"done":""}">${oChk(!!d.rd[r.id],"rDone",r.id)}<span class="ot">${esc(r.t)}</span><span class="otag ${r.tag}">${r.tag==="biz"?"business":"moi"}</span></div>`).join("")||`<p class="muted">Pas de routine ce jour-là.</p>`}
+    </div>
+    ${dow===0?`<div class="ocard sun"><div class="otitle">🧺 Ma semaine prochaine</div>
+      <label class="ofield"><span>Mon objectif de la semaine prochaine</span><input class="rin" data-of="nextObj" value="${esc(oWeek(iso(new Date(new Date(k+"T12:00").getTime()+864e5))).obj)}" placeholder="Ex. : 2 appels réservés + 1 vidéo YouTube"></label>
+      <p class="muted" style="font-size:12.5px">Pense aussi à faire ton bilan dans « Mon bilan », et à répartir tes tâches en attente.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-o="tab" data-v="bilan">📊 Mon bilan</button><button class="btn sm" data-o="tab" data-v="attente">🗂️ En attente</button></div></div>`:""}
+  </div>`;
+}
+
+function oSemaine(k, today){
+  const W = weekDays(k), wk = oWeek(mondayKey(k));
+  return `<div class="oview"><button data-o="wview">Jour</button><button class="on">Toute la semaine</button></div>
+  ${wk.obj?`<div class="oweek">🎯 Objectif de la semaine : <b>${esc(wk.obj)}</b></div>`:""}
+  <div class="oweekall">${W.map(x=>{ const d=O.days[x]||{tasks:[],rd:{}}, dw=dowOf(x), R=routinesOf(x), s=dayStats(x), ct=d.contenu||O.contenu[dw]||"";
+    return `<div class="ocard ${x===today?"otoday":""}"><button class="owhead" data-o="openDay" data-v="${x}"><span>${O.emoji[dw]||""} <b>${JOURS[dw].toUpperCase()}</b> <small>${new Date(x+"T12:00").getDate()} ${MOIS[new Date(x+"T12:00").getMonth()]}</small></span><em>${s.pct}% ›</em></button>
+      ${d.obj?`<div class="omuted">– Objectif du jour : <b>${esc(d.obj)}</b></div>`:""}${ct?`<div class="omuted">– Contenu du jour : ${esc(ct)}</div>`:""}
+      ${(d.tasks||[]).map(t=>`<div class="otask ${t.done?"done":""}">${oChk(t.done,"tDone",t.id,`data-d="${x}"`)}<span class="ot">${t.star?"★ ":""}${t.time?`<em>${esc(t.time)}</em>`:""}${esc(t.t)}</span></div>`).join("")}
+      ${R.map(r=>`<div class="otask r ${d.rd&&d.rd[r.id]?"done":""}">${oChk(!!(d.rd&&d.rd[r.id]),"rDone",r.id,`data-d="${x}"`)}<span class="ot">${esc(r.t)}</span></div>`).join("")}
+      <div class="oadd"><input class="rin" id="o-w-${x}" placeholder="Ajouter au ${JOURS[dw].toLowerCase()}…"><button class="btn sm red" data-o="wAdd" data-v="${x}">+</button></div></div>`; }).join("")}</div>`;
+}
+function oAttente(){
+  const W = weekDays(iso(new Date()));
+  const grp = (cat, lbl) => { const L = O.backlog.filter(x=>x.cat===cat);
+    return `<div class="ocard"><div class="otitle">${lbl} <span class="muted" style="font-size:12.5px">${L.length}</span></div>
+      ${L.map(x=>`<div class="otask">${oChk(false,"bDone",x.id)}<span class="ot">${esc(x.t)}</span><select class="osel" data-o2="bMove" data-v="${x.id}" aria-label="Mettre un jour"><option value="">→ jour</option>${W.map(w=>`<option value="${w}">${J3[dowOf(w)]} ${new Date(w+"T12:00").getDate()}</option>`).join("")}</select></div>`).join("")||`<p class="muted">Rien en attente 🎉</p>`}
+      <div class="oadd"><input class="rin" id="o-b-${cat}" placeholder="Ajouter…"><button class="btn sm red" data-o="bAdd" data-v="${cat}">Ajouter</button></div></div>`; };
+  return `<p class="muted" style="margin-bottom:12px">Tes tâches à répartir dans la semaine. Choisis un jour avec « → jour » : elle passe directement dans ce jour-là. Coche-la si elle est faite.</p>
+  <div class="ogrid">${grp("business","💼 Business")}${grp("perso","🌸 Perso")}</div>`;
+}
+
+function oMois(today){
+  const m = monthKey(today), M = oMonth(m), ca = caMonth(m), nc = newClients(m);
+  const pct = Math.min(100, ca/5000*100);
+  const mo = new Date(today+"T12:00"), name = mo.toLocaleDateString("fr-FR",{month:"long"});
+  let n = 0;
+  return `<div class="ogrid">
+   <div class="ocard"><div class="otitle">💰 Encaissé en ${name}</div><div class="obig">${eur(ca)}</div>
+     <div class="ogauge"><i style="width:${pct}%"></i><s style="left:60%"></s><s style="left:80%"></s></div>
+     <div class="ogl"><span style="left:0">0</span><span style="left:60%">3 k€</span><span style="left:80%">4 k€</span><span style="right:0">🌟 5 k€</span></div>
+     <p class="muted" style="font-size:13px">${ca>=4000?"Objectif atteint 🎉 Direction les 5 000 € !":ca>=3000?"Objectif de base atteint 🎉 Encore "+eur(4000-ca)+" pour 4 000 €.":"Encore <b>"+eur(3000-ca)+"</b> pour ton objectif."} Relié à « Mon chiffre d'affaires ».</p>
+     <div class="otitle" style="margin-top:6px">🎉 Nouvelles clientes</div><div class="ostars">${[1,2,3,4,5].map(i=>`<i class="${i<=nc?"f":""} ${i===5?"amb":""}">★</i>`).join("")}</div><p class="muted" style="font-size:13px">${nc} sur 3–4 · ambition 5 (d'après tes premiers paiements du mois)</p></div>
+   <div class="ocard"><div class="otitle">🗓️ Mes objectifs du mois</div>
+     ${M.goals.map(g=>`<div class="otask ${M.done[g.id]?"done":""}">${oChk(!!M.done[g.id],"gDone",g.id)}<span class="ot">${esc(g.t)}</span><button class="omini" data-o="gDel" data-v="${g.id}" aria-label="Supprimer">×</button></div>`).join("")||`<p class="muted">Ajoute tes objectifs du mois.</p>`}
+     <div class="oadd"><input class="rin" id="o-goal" placeholder="Nouvel objectif du mois…"><button class="btn sm red" data-o="gAdd">Ajouter</button></div></div>
+  </div>
+  <div class="ocard" style="margin-top:14px"><div class="otitle">📋 Checklist administrative de fin de mois</div>
+    ${ADMIN.map(([h,L],gi)=>`<div class="osub">${h}</div>${L.map((t,i)=>{ const key=gi+"-"+i; return `<div class="otask ${M.admin[key]?"done":""}">${oChk(!!M.admin[key],"aDone",key)}<span class="ot">${esc(t)}</span></div>`; }).join("")}`).join("")}
+    <p class="muted" style="font-size:12.5px;margin-top:6px">Elle se remet à zéro toute seule le mois prochain.</p></div>`;
+}
+
+function oBilan(today){
+  const wk = mondayKey(today), W = weekDays(today), B = oWeek(wk).bilan = oWeek(wk).bilan || {};
+  const st = W.map(dayStats), tot = st.reduce((a,s)=>a+s.tot,0), done = st.reduce((a,s)=>a+s.done,0);
+  const sum = f => W.reduce((a,k)=>a+(+(O.days[k]||{})[f]||0),0);
+  const sport = W.filter(k=>routinesOf(k).some(r=>r.id==="sport")), sportOk = sport.filter(k=>O.days[k]?.rd?.sport).length;
+  const grat = W.filter(k=>O.days[k]?.rd?.gm||O.days[k]?.rd?.gs).length;
+  const caW = FIN.filter(x=>x.statut!=="a_venir" && W.includes(dIn(x.date))).reduce((a,x)=>a+(+x.montant||0),0);
+  const prev = Object.keys(O.weeks).filter(w=>w<wk).sort().slice(-4);
+  return `<div class="ocard"><div class="otitle">📊 Ma semaine du ${new Date(W[0]+"T12:00").getDate()} au ${new Date(W[6]+"T12:00").getDate()} ${MOIS[new Date(W[6]+"T12:00").getMonth()]} <span class="pill">se remplit tout seul</span></div>
+    <div class="ostats"><div><span>Tâches + routines faites</span><b>${tot?Math.round(done/tot*100):0}%</b></div><div><span>Sessions de setting</span><b>${sum("set")}<small>/15</small></b></div><div><span>Reels publiés</span><b>${sum("reels")}</b></div>
+    <div><span>Sport</span><b>${sportOk}<small>/${sport.length}</small></b></div><div><span>Jours de gratitude</span><b>${grat}<small>/7</small></b></div><div><span>Encaissé cette semaine</span><b>${eur(caW)}</b></div></div>
+    <div class="oweekbars">${W.map(k=>{ const s=dayStats(k); return `<div><i style="height:${Math.max(4,s.pct)}%"></i><small>${J3[dowOf(k)]}</small></div>`; }).join("")}</div></div>
+  <div class="ocard" style="margin-top:14px"><div class="otitle">✍️ Mon bilan du dimanche</div>
+    <label class="ofield"><span>Ce qui a bien marché cette semaine (contenus, conversations, appels…)</span><textarea class="rin" rows="2" data-of="b_marche">${esc(B.marche||"")}</textarea></label>
+    <label class="ofield"><span>Ma plus belle victoire 🏆</span><textarea class="rin" rows="2" data-of="b_victoire">${esc(B.victoire||"")}</textarea></label>
+    <label class="ofield"><span>Ce que j'ajuste la semaine prochaine</span><textarea class="rin" rows="2" data-of="b_ajuster">${esc(B.ajuster||"")}</textarea></label>
+    <p class="muted" style="font-size:12.5px">Parfait à envoyer à Catherine : elle veut tes résultats, pas seulement les tâches faites.</p>
+    <button class="btn sm" data-o="copyBilan">📋 Copier mon bilan pour Catherine</button></div>
+  ${prev.length?`<div class="ocard" style="margin-top:14px"><div class="otitle">Mes semaines précédentes</div>${prev.reverse().map(w=>{ const ws=weekDays(w).map(dayStats), t=ws.reduce((a,s)=>a+s.tot,0), dn=ws.reduce((a,s)=>a+s.done,0), V=O.weeks[w].bilan||{}; return `<div class="otask"><span class="ot"><b>Semaine du ${new Date(w+"T12:00").getDate()} ${MOIS[new Date(w+"T12:00").getMonth()]}</b>${V.victoire?`<br><span class="muted">🏆 ${esc(V.victoire)}</span>`:""}</span><b>${t?Math.round(dn/t*100):0}%</b></div>`; }).join("")}</div>`:""}`;
+}
+
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-o]"); if(!b) return; const a = b.dataset.o, v = b.dataset.v, dk = b.dataset.d || oDay, d = oDayObj(dk), m = oMonth(monthKey(iso(new Date())));
+  if(a==="tab"){ oTab=v; oEditR=false; render(); window.scrollTo(0,0); return; }
+  if(a==="day"){ oDay=v; oEditR=false; render(); return; }
+  if(a==="wview"){ oWeekView=!oWeekView; oEditR=false; render(); return; }
+  if(a==="openDay"){ oDay=v; oWeekView=false; render(); window.scrollTo(0,0); return; }
+  if(a==="wAdd"){ const inp=document.getElementById("o-w-"+v), t=inp&&inp.value.trim(); if(!t){ inp&&inp.focus(); return; } oDayObj(v).tasks.push({id:oid(), t, time:"", done:false, star:false}); }
+  if(a==="set"||a==="reels"){ d[a] = (d[a]===+v) ? +v-1 : +v; }
+  if(a==="tDone"){ const t=d.tasks.find(x=>x.id===v); if(t) t.done=!t.done; }
+  if(a==="tStar"){ const t=d.tasks.find(x=>x.id===v); if(t){ if(!t.star && d.tasks.filter(x=>x.star).length>=3){ toast("3 essentiels maximum : c'est ce qui les rend essentiels 😉"); return; } t.star=!t.star; } }
+  if(a==="tDel"){ d.tasks=d.tasks.filter(x=>x.id!==v); }
+  if(a==="tNext"){ const t=d.tasks.find(x=>x.id===v); if(t){ const n=new Date(oDay+"T12:00"); n.setDate(n.getDate()+1); d.tasks=d.tasks.filter(x=>x.id!==v); oDayObj(iso(n)).tasks.push(Object.assign({},t,{done:false})); toast("Reportée à demain ↪"); } }
+  if(a==="tAdd"){ const t=$("#o-new").value.trim(); if(!t){ $("#o-new").focus(); return; } d.tasks.push({id:oid(), t, time:$("#o-time").value.trim(), done:false, star:false}); }
+  if(a==="carry"){ const y=new Date(oDay+"T12:00"); y.setDate(y.getDate()-1); const Y=oDayObj(iso(y)); const L=Y.tasks.filter(x=>!x.done); Y.tasks=Y.tasks.filter(x=>x.done); d.tasks.push(...L); toast(L.length+" tâche(s) reportée(s) ✓"); }
+  if(a==="rDone"){ d.rd[v]=!d.rd[v]; }
+  if(a==="editR"){ oEditR=!oEditR; render(); return; }
+  if(a==="rDel"){ const w=dowOf(oDay); O.routines[w]=(O.routines[w]||[]).filter(r=>r.id!==v); }
+  if(a==="rAdd"){ const t=$("#o-rnew").value.trim(); if(!t) return; const w=dowOf(oDay); (O.routines[w]=O.routines[w]||[]).push(r_(oid(),t,"moi")); }
+  if(a==="bDone"){ O.backlog=O.backlog.filter(x=>x.id!==v); toast("Bravo, c'est fait ✓"); }
+  if(a==="bAdd"){ const inp=$("#o-b-"+v), t=inp.value.trim(); if(!t) return; O.backlog.push({id:oid(), t, cat:v}); }
+  if(a==="gDone"){ m.done[v]=!m.done[v]; }
+  if(a==="gDel"){ m.goals=m.goals.filter(g=>g.id!==v); }
+  if(a==="gAdd"){ const t=$("#o-goal").value.trim(); if(!t) return; m.goals.push({id:oid(), t}); }
+  if(a==="aDone"){ m.admin[v]=!m.admin[v]; }
+  if(a==="copyBilan"){ const wk=mondayKey(iso(new Date())), B=oWeek(wk).bilan||{}, W=weekDays(iso(new Date())), sum=f=>W.reduce((s,k)=>s+(+(O.days[k]||{})[f]||0),0);
+    const txt=`Mon bilan de la semaine du ${new Date(W[0]+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"})}\n• Sessions de setting : ${sum("set")}\n• Reels publiés : ${sum("reels")}\n• Encaissé cette semaine : ${eur(FIN.filter(x=>x.statut!=="a_venir"&&W.includes(dIn(x.date))).reduce((s,x)=>s+(+x.montant||0),0))}\n\nCe qui a marché : ${B.marche||"–"}\nMa plus belle victoire : ${B.victoire||"–"}\nCe que j'ajuste : ${B.ajuster||"–"}`;
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast("Copié ✓ Tu n'as plus qu'à le coller à Catherine"),()=>toast("Copie impossible ici")); return; }
+  oSave(); render();
+});
+document.addEventListener("change", e=>{
+  const s = e.target.closest("[data-o2]"); if(!s) return;
+  if(s.dataset.o2==="bMove" && s.value){ const x=O.backlog.find(y=>y.id===s.dataset.v); if(!x) return; O.backlog=O.backlog.filter(y=>y.id!==x.id); oDayObj(s.value).tasks.push({id:oid(), t:x.t, time:"", done:false, star:false}); toast("Ajoutée au "+prettyDay(s.value)+" ✓"); oSave(); render(); }
+});
+document.addEventListener("input", e=>{
+  const f = e.target.closest("[data-of]"); if(!f) return; const k=f.dataset.of, val=f.value, dow=dowOf(oDay), wk=mondayKey(iso(new Date()));
+  if(k==="obj"||k==="contenu") oDayObj(oDay)[k]=val;
+  if(k==="emoji") O.emoji[dow]=val;
+  if(k==="contenuDef") O.contenu[dow]=val;
+  if(k==="nextObj"){ const n=new Date(oDay+"T12:00"); n.setDate(n.getDate()+1); oWeek(iso(n)).obj=val; }
+  if(k.startsWith("b_")){ const B=oWeek(wk).bilan=oWeek(wk).bilan||{}; B[k.slice(2)]=val; }
+  oSave();
+});
+document.addEventListener("keydown", e=>{ if(e.key!=="Enter") return; const id=e.target.id;
+  if(id.startsWith("o-w-")){ e.preventDefault(); const btn=document.querySelector(`[data-o="wAdd"][data-v="${id.slice(4)}"]`); if(btn) btn.click(); return; }
+  const map={"o-new":"tAdd","o-time":"tAdd","o-rnew":"rAdd","o-goal":"gAdd","o-b-business":"bAdd","o-b-perso":"bAdd"}; if(!map[id]) return; e.preventDefault();
+  const btn=document.querySelector(`[data-o="${map[id]}"]${id.startsWith("o-b-")?`[data-v="${id.slice(4)}"]`:""}`); if(btn) btn.click(); });
+document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="visible"){ oDay = O.__lastOpen===iso(new Date()) ? oDay : iso(new Date()); O.__lastOpen=iso(new Date()); oPull(); } });
 
 </script>
 
